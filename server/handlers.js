@@ -37,17 +37,10 @@ const addUser = async (req, res) => {
       //   add user
       const insertResult = await db.collection("users").insertOne(newUser);
   
-    //   const updateResult = await db.collection("items").updateMany(
-    //     { _id: { $in: order } },
-    //     {
-    //       $inc: {
-    //         numInStock: -1,
-    //       },
-    //     }
-    //   );
+
   
       if (insertResult) {
-        return res.status(200).json({ status: 200, message: newMember });
+        return res.status(200).json({ status: 200, message: newUser });
       } else {
         return res
           .status(400)

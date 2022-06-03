@@ -4,6 +4,8 @@
 
 ///setting up the server
 const express = require('express');
+const morgan = require('morgan');
+
 const app = express();
 const cloudinary = require('cloudinary').v2;
 
