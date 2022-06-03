@@ -35,7 +35,7 @@ express()
 
 //////// endpoints
 
-.post("/AudioPlacebo/new-user/", addUser)
+.post("/AudioPlacebo/new-user", addUser)
 
 app.get('/', (req, res) => {
     res.send('Hello World');

@@ -33,6 +33,7 @@ const addUser = async (req, res) => {
     const client = new MongoClient(MONGO_URI, options);
     try {
       await client.connect();
+      console.log("connected")
       const db = client.db("AudioPlacebo");
       //   add user
       const insertResult = await db.collection("users").insertOne(newUser);
