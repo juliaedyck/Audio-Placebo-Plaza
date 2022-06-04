@@ -1,18 +1,16 @@
 'use strict';
 
-
-
 ///setting up the server
 const express = require('express');
 const morgan = require('morgan');
 
-const app = express();
 const cloudinary = require('cloudinary').v2;
 
 
 //importing handler functions
 const {
-addUser
+addUser, 
+getPlacebo
   } = require("./handlers");
 
 express()
@@ -35,11 +33,12 @@ express()
 
 //////// endpoints
 
-.post("/AudioPlacebo/new-user", addUser)
+.post("/new-user", addUser)
+.get("/api/get-placebo", getPlacebo)
 
-app.get('/', (req, res) => {
+.get('/', (req, res) => {
     res.send('Hello World');
  })
 
 
-app.listen(8000)
+.listen(8000, ()=>(console.log("listening on port 8000")))

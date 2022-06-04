@@ -1,11 +1,11 @@
 import styled from "styled-components"
 
 
-const Header =()=> {
+const About =()=> {
 
     return (
         <Wrapper>
-        AUDIO PLACEBO PLAZA
+        ABOUT US :)
         </Wrapper>
     )
 }
@@ -15,4 +15,4 @@ align-items: center;
 justify-content: center;
 `
 
-export default Header
+export default About

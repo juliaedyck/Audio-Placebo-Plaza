@@ -4,6 +4,8 @@ import NavBar from "./components/NavBar";
 import styled from "styled-components";
 import Header from "./components/Header";
 import Form from "./components/Form";
+import Login from "./components/Login";
+import About from "./components/About";
 
 const App = () =>{
   return (
@@ -15,10 +17,15 @@ const App = () =>{
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route exact path="/">
-            <HomePage />
+          <Route path="/About">
+            <About />
           </Route>
-
+          <Route path="/Form">
+            <Form/>
+          </Route>
+          <Route path="/Login">
+            <Login />
+          </Route>
 
         </Switch>
       </Wrapper>
