@@ -1,32 +1,39 @@
 import styled from "styled-components";
 import { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom"
+import { CurrentUserContext } from "./CurrentUserContext";
 
 const Login = () => {
 
-const [loggedIn, setLoggedIn] = useState(false)
-const [userName, setUserName] = useState(null)
+
+const { loggedIn, setLoggedIn, currentUser, setCurrentUser, password, setPassword, firstName, setFirstName} = useContext(CurrentUserContext)
 const history = useHistory()
 
 
-///just a useless login for now - will try to use Google 
-
+///login with email and password
 const onSubmitHandler = (e) => {
 e.preventDefault();
 
-    // fetch("/api/login", {method: "POST", headers: {"Content-Type": "application/json"}, body: JSON.stringify({userName})})
-    // .then((res) => res.json())
-    // .then((data) => {
-    //     console.log(data)
-    //     setCurrentUser(data.data)
-    //     console.log(currentUser)
+    fetch("/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          firstName: firstName,
+          password: password,
+    })}
+    )
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data)
+        setCurrentUser(data.data)
+        console.log(currentUser)
         console.log("logged in")
-        window.sessionStorage.setItem("data", JSON.stringify(userName))
-        setLoggedIn(true)
-        history.push("/")
-
-
-
+        window.sessionStorage.setItem("data", JSON.stringify(currentUser))
+        setLoggedIn(true)})
+        history.push("/Profile")
     }
 
 return (
@@ -34,11 +41,20 @@ return (
     <FormContainer>
     <Form  onSubmit={onSubmitHandler}>
         <Input
-        type="text" 
+        type="name" 
         id="name" 
         placeholder="your first name"
         maxLength={100} 
-        onChange={(e) => setUserName(e.target.value) }
+        onChange={(e) => setFirstName(e.target.value) }
+
+        />
+
+<Input
+        type="password" 
+        id="password" 
+        placeholder="your password"
+        maxLength={100} 
+        onChange={(e) => setPassword(e.target.value) }
 
         />
     <button>log in</button>

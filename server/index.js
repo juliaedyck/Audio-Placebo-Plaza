@@ -10,7 +10,9 @@ const cloudinary = require('cloudinary').v2;
 //importing handler functions
 const {
 addUser, 
-getPlacebo
+getPlacebo, 
+getUserByPassword,
+updateProfile
   } = require("./handlers");
 
 express()
@@ -34,7 +36,9 @@ express()
 //////// endpoints
 
 .post("/new-user", addUser)
+.post("/login", getUserByPassword)
 .get("/api/get-placebo", getPlacebo)
+.patch("/profile/:id", updateProfile)
 
 .get('/', (req, res) => {
     res.send('Hello World');

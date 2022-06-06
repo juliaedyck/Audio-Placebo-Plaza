@@ -7,6 +7,8 @@ import Form from "./components/Form";
 import Login from "./components/Login";
 import About from "./components/About";
 import MyForm from "./components/testForm";
+import Confirmation from "./components/Confirmation";
+import Profile from "./components/Profile";
 
 const App = () =>{
   return (
@@ -28,7 +30,12 @@ const App = () =>{
           <Route path="/Login">
             <Login />
           </Route>
-
+          <Route path="/Confirmed">
+            <Confirmation />
+          </Route>
+          <Route path="/Profile">
+            <Profile />
+          </Route>
         </Switch>
       </Wrapper>
     </Router>

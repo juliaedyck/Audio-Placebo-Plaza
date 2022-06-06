@@ -4,6 +4,7 @@ const { MongoClient, MongoSystemError, Double } = require("mongodb");
 require("dotenv").config();
 const { MONGO_URI, CLOUDINARY_URL, API_KEY, API_SECRET} = process.env;
 const { v4: uuidv4 } = require("uuid");
+const { runInNewContext } = require("vm");
 
 const cloudinary = require("cloudinary").v2;
 cloudinary.config({
@@ -23,7 +24,7 @@ const options = {
 
 //// add user
 const addUser = async (req, res) => {
-    const { firstName, lastName, email } = req.body;
+    const { firstName, lastName, email, password} = req.body;
   console.log(req.body)
     const newUser = {
       _id: uuidv4(),
@@ -51,6 +52,83 @@ const addUser = async (req, res) => {
     }
   };
   
+//login
+
+
+const getUserByPassword = async (req, res) => {
+
+  const {firstName, password} = req.body
+  console.log(req.body.password)
+  const client = new MongoClient(MONGO_URI, options);
+
+    try {
+      await client.connect();
+      console.log("connected")
+      const db = client.db("AudioPlacebo");
+
+// /validation 
+
+const matchUser = await db.collection("users").findOne({firstName, password});
+
+console.log(matchUser)
+if (matchUser) {
+  return res.status(200).json({ status: 200, message: "logged in", data: matchUser.firstName });
+} else {
+  return res
+    .status(400)
+    .json({ status: 400, message: "user not found" });
+}    } catch (err){console.log(err)}
+
+    
+};
+
+
+//////update profile
+
+const updateProfile = async (req, res) => {
+  const { _id } = req.params;
+  try {
+    const {
+      firstName,
+      lastName, 
+      email, 
+      password,
+      favourites,
+
+    } = req.body;
+
+
+    const client = new MongoClient(MONGO_URI, options);
+    await client.connect();
+    const db = client.db("AudioPlacebo");
+
+    const updateItem = await db.collection("users").updateOne(
+      { id: _id },
+      {
+        $set: {
+          firstName,
+          lastName, 
+          email, 
+          password,
+          favourites,
+        },
+      }
+    );
+    await client.close();
+    if (updateProfile) {
+      return res
+        .status(200)
+        .json({ status: 200, message: "success", data: updateItem });
+    } else {
+      res.status(400).json({ status: 400, message: "wasn't able to update" });
+    }
+  } catch (err) {
+    res.status(500).json({ status: 500, mesage: "error", data: req.params });
+  }
+};
+
+
+
   //getPlacebo
 
   const getPlacebo = async (req, res) => {
@@ -86,4 +164,4 @@ const addUser = async (req, res) => {
   });
   }
 
-  module.exports = {addUser, getPlacebo}
+  module.exports = {addUser, getPlacebo, getUserByPassword,  updateProfile}
