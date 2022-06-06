@@ -6,6 +6,7 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Login from "./components/Login";
 import About from "./components/About";
+import MyForm from "./components/testForm";
 
 const App = () =>{
   return (
@@ -21,7 +22,8 @@ const App = () =>{
             <About />
           </Route>
           <Route path="/Form">
-            <Form/>
+            {/* <MyForm/> */}
+            <Form />
           </Route>
           <Route path="/Login">
             <Login />
