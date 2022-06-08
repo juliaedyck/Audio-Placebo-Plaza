@@ -6,7 +6,6 @@ import Header from "./components/Header";
 import Form from "./components/Form";
 import Login from "./components/Login";
 import About from "./components/About";
-import MyForm from "./components/testForm";
 import Confirmation from "./components/Confirmation";
 import Profile from "./components/Profile";
 
@@ -30,10 +29,10 @@ const App = () =>{
           <Route path="/Login">
             <Login />
           </Route>
-          <Route path="/Confirmed">
+          <Route path="/Confirmed/:_id">
             <Confirmation />
           </Route>
-          <Route path="/Profile/:id">
+          <Route path="/profile/:profileId">
             <Profile />
           </Route>
         </Switch>

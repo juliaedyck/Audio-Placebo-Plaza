@@ -18,7 +18,7 @@ useEffect(() => {
     if (storedValue) {
       setLoggedIn(true)
       setCurrentUser(JSON.parse(storedValue))
-      console.log(currentUser, "user")
+      // console.log(currentUser, "user")
     }
 
 })

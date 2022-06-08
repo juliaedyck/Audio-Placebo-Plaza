@@ -17,7 +17,7 @@ const Login = () => {
   const history = useHistory();
 
   const [profileId, setProfileId] = useState("");
-  const [validUser, setValidUser] = useState(false);
+  const [invalidUser, setInvalidUser] = useState(false);
 const [loading, setLoading]= useState(false)
 
   ///login with email and password
@@ -31,33 +31,37 @@ const [loading, setLoading]= useState(false)
         Accept: "application/json",
       },
       body: JSON.stringify({
-        firstName: firstName,
-        password: password,
+        firstName,
+        password,
       }),
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data.status);
-        setCurrentUser(data.data);
-        setProfileId(data.data._id);
+        console.log(data);
         if (data.status === 400) {
-          setValidUser(true);
-        }
+            setInvalidUser(true);
+          }
+       
+  
         if (data.status === 200) {
-          console.log("logged in");
+        //   console.log("logged in");
           window.sessionStorage.setItem(
             "data",
             JSON.stringify(currentUser.firstName)
           );
+          setCurrentUser(data.data);
+          setProfileId(data.data._id);
           setLoggedIn(true);
           setLoading(false)
-        //   history.push(`/Profile/${profileId}`)
+          setInvalidUser(false);
+
+          history.push(`/profile/${profileId}`)
         }
       });
   };
-  console.log(profileId);
+  console.log(firstName)
 
-  if (loading) {
+  if (loading && !invalidUser) {
     return (
       <>
         loading
@@ -89,16 +93,12 @@ const [loading, setLoading]= useState(false)
         </FormContainer>
       </Wrapper>
 
-      <Div validUser> user not found!</Div>
+     { invalidUser && <Div> user not found!</Div> }
     </>
   );
 
-  //   if (validUser === false) {
-  //       return (
-  //           <>
-  //           user not found!</>
-  //       )
-  //   }
+
+
   }
 };
 const Div = styled.div`
@@ -106,9 +106,7 @@ const Div = styled.div`
   align-items: center;
   justify-content: center;
 
-  &:validuser {
-    display: none;
-  }
+
 `;
 
 const Input = styled.input``;

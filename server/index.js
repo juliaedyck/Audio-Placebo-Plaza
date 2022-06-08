@@ -12,8 +12,9 @@ const {
 addUser, 
 getPlacebo, 
 getUserByPassword,
-updateProfile,
+likePlacebo,
 getUserById,
+getPlacebos
   } = require("./handlers");
 
 express()
@@ -36,10 +37,11 @@ express()
 
 //////// endpoints
 .get("/profile/:id", getUserById)
+.get("/get-placebo/:id", getPlacebo)
+.get("/get-placebos", getPlacebos)
 .post("/new-user", addUser)
 .post("/login", getUserByPassword)
-.get("/api.Cloudinary.com/v1_1/df6wmqnl6/image/upload", getPlacebo)
-.patch("/profile/:id", updateProfile)
+.patch("/add-like", likePlacebo)
 
 
 .get('/', (req, res) => {
