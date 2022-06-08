@@ -13,7 +13,7 @@ return (
     <StyledNavLink to= "/About">About</StyledNavLink> 
 
     {currentUser ? <Span>
-            <StyledNavLink to= "/Profile">{currentUser}</StyledNavLink>
+            <StyledNavLink to= "/Profile/:profileId">{currentUser}</StyledNavLink>
             </Span>
             :
             
@@ -29,10 +29,27 @@ const Wrapper = styled.div`
 display: flex;
 justify-content: right;
 align-items: center;
+background-color:  #f7c2ce;
 `
 
 const StyledNavLink = styled(NavLink)`
-padding: 10px;`
+padding: 10px;
+color: #669966;
+  margin-left: 10px;
+  font-family: var(--font-body);
+  text-decoration: none;
+  outline: none;
+
+  &:hover {
+    color: #336699;
+  }
+
+  &.active {
+    color: #336699;
+
+  }
+`
+
 
 const Span = styled.span``
 

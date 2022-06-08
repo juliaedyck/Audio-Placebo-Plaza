@@ -59,13 +59,13 @@ const Form = () => {
         <TheForm onSubmit={handleSubmit}>
           <Wrapper>
             <InfoWrapper>
-              <Input
+              <Input2
                 type="text"
                 placeholder="First Name"
                 value={firstName}
                 onChange={(ev) => setFirstName(ev.target.value)}
               />
-              <Input
+              <Input2
                 type="text"
                 placeholder="Last Name"
                 value={lastName}
@@ -80,7 +80,7 @@ const Form = () => {
 
               <Input2
                 type="text"
-                placeholder="password"
+                placeholder="create a password"
                 value={password}
                 onChange={(ev) => setPassword(ev.target.value)}
               />
@@ -91,10 +91,14 @@ const Form = () => {
             </div>
             <OptionsWrapper>
               <Input2 type="checkbox" id="soundscapes" />
-              <label for="soundscapes"> soundscapes </label>
-
+              <label for="soundscapes">   <a href="https://en.wikipedia.org/wiki/Soundscape" target="popup" onclick="window.open('../html-link.htm','name','width=600,height=400')">
+                soundscapes      </a> </label>
+    
               <Input2 type="checkbox" id="nature sounds" />
-              <label for="nature sounds"> nature sounds </label>
+              <label for="nature sounds"> 
+              
+              
+              <a href="https://en.wikipedia.org/wiki/Soundscape" target="popup" onclick="window.open('https://en.wikipedia.org/wiki/Soundscape,'name','width=600,height=400')">nature sounds</a></label>
 
               <Input2 type="checkbox" id="isochronic tones" />
               <label for="isochronic tones"> isochronic tones </label>
@@ -177,13 +181,23 @@ const Form = () => {
     );
 };
 
-const InfoWrapper = styled.div``
+const InfoWrapper = styled.div`
+padding: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+`
 
-const OptionsWrapper = styled.div``
+const OptionsWrapper = styled.div`
+padding: 20px;
+display: flex;
+align-items: space-evenly`
 
-const NoiseWrapper = styled.div``
+const NoiseWrapper = styled.div`
+padding: 20px;`
 
-const ExperienceWrapper = styled.div``
+const ExperienceWrapper = styled.div`
+padding: 20px;`
 
 
 
@@ -195,6 +209,9 @@ const Input = styled.input`
 
 const Input2 = styled(Input)`
   width: 175px;
+  margin: 10px;
+  padding: 5px;
+  border-radius: 16px;
 `;
 
 const Input3 = styled(Input)`
@@ -218,15 +235,16 @@ const Container = styled.div`
 
 
 const TheForm = styled.form`
-  padding-top: 15px;
+  padding: 15px;
   margin-top: 5px;
   display: flex;
   flex-direction: column;
+
 `;
 
 const Button = styled.button`
   font-family: var(--font-heading);
-  background: var(--color-green);
+  background: #336699;
   height: 30px;
   width: 200px;
   border-radius: 16px;
@@ -237,12 +255,12 @@ const Button = styled.button`
   margin-left: 10px;
 
   &:hover {
-    background: var(--color-blue);
+    background: #669966;
     transition: 300ms ease-in-out;
   }
 
   &:disabled {
-    background: #d5fec7;
+    background: #669966;
     cursor: not-allowed;
     transition: none;
   }

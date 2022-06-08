@@ -33,7 +33,7 @@ const App = () =>{
           <Route path="/Confirmed">
             <Confirmation />
           </Route>
-          <Route path="/Profile">
+          <Route path="/Profile/:id">
             <Profile />
           </Route>
         </Switch>
