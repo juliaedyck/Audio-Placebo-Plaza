@@ -6,6 +6,7 @@ import { useParams } from "react-router-dom"
 
 
 
+
 const Profile = () => {
     
     const {favourites, setFavourites, currentUser, setCurrentUser} = useContext(CurrentUserContext)
@@ -13,7 +14,9 @@ const Profile = () => {
     let { profileId }= useParams();
     const [isLoading, setIsLoading] = useState(false)
     const [placebo, setPlacebo] = useState()
-    console.log(currentUser.favourites)
+    const [placebos, setPlacebos] = useState([])
+
+
     
      
     useEffect(() => {
@@ -30,39 +33,90 @@ const Profile = () => {
         
     }, [profileId]);
     
-    // console.log(currentUser)
-
-
+    
+    
     ///fetch placebo from id (favourite id)
-    useEffect(() => {
-        setIsLoading(true)
-        fetch(`/get-placebo/${currentUser.favourites}`)
-        .then((res) => res.json())
-        .then((data) => {
-            console.log(data);
-            setPlacebo(data.data.url)
-            setIsLoading(false)
+    // useEffect(() => {
+    //     setIsLoading(true)
+    //     fetch(`/get-placebo/${currentUser.favourites}`)
+    //     .then((res) => res.json())
+    //     .then((data) => {
+    //         console.log(data);
+    //         setPlacebo(data.data)
+    //         setIsLoading(false)
             
             
-        });
+    //     });
         
-    }, [profileId]);
+    // }, [profileId]);
 
+
+    ////get all placebos and conditionally render on page
+
+const fetchPlacebos = () => {
+    fetch("/get-placebos")
+      .then((res) => res.json())
+      .then((data) => {
+          console.log(data.data)
+        setPlacebos(data.data);
+        setIsLoading(false);
+      });
+  };
+  
+  useEffect(() => {
+    setIsLoading(true);
+    fetchPlacebos();
+  }, [profileId]);
+    
+console.log(currentUser)
     return (
-
         <>
         {isLoading ? ("loading") : (
             <div>
-        Your audio placebos:
-        {/* {currentUser?.favourites?.map((fav) => <p>{fav}</p>)} */}
+{currentUser.noise}
+
+                {placebos?.filter((placebo) => {
+                    return currentUser.favourites.includes(placebo._id)
+                }
+
+                ).map((placebo, index) => {
+                    console.log(placebo)
+                    return (
+                        <Div>
+<ResponsiveEmbed src={placebo?.url}/>
+</Div>
+)
 
 
-    <ResponsiveEmbed style="border: 0; width: 100%; height: 42px;" src={placebo} seamless/>
+//             if (currentUser.favourites.some((favourite) => favourite === placebo._id)) {
 
+// return (
+// <PlaceboWrapper key ={currentUser._id}>
+//         Your audio placebos:
+//         {currentUser?.favourites?.map((fav) => <p>{fav}</p>)}
+
+
+           
+//     </PlaceboWrapper>
+// )
+// }
+//             })
+            
+            
+            }
+            )}
         </div>
-        )}
         
-        </>
         )
 }
+        </>
+        )}
+
+const PlaceboWrapper = styled.div``
+
+const Div = styled.div`
+border: red solid 1px;
+height: 50px;
+`
+
 export default Profile;

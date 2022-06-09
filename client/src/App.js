@@ -8,10 +8,14 @@ import Login from "./components/Login";
 import About from "./components/About";
 import Confirmation from "./components/Confirmation";
 import Profile from "./components/Profile";
+import NewUser from "./components/NewUser";
+import GlobalStyles from "./components/GlobalStyles";
+
 
 const App = () =>{
   return (
     <Router>
+      <GlobalStyles/>
       <Wrapper>
         <Header />
         <NavBar />
@@ -34,6 +38,9 @@ const App = () =>{
           </Route>
           <Route path="/profile/:profileId">
             <Profile />
+          </Route>
+          <Route path="/new-user">
+            <NewUser />
           </Route>
         </Switch>
       </Wrapper>

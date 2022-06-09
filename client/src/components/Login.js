@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { useEffect, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { CurrentUserContext } from "./CurrentUserContext";
+import { Link, NavLink } from "react-router-dom"
+
 
 const Login = () => {
   const {
@@ -37,10 +39,9 @@ const [loading, setLoading]= useState(false)
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         if (data.status === 400) {
             setInvalidUser(true)
-            // console.log(data.data)
+            console.log(data.data)
           }
        
   
@@ -57,11 +58,12 @@ const [loading, setLoading]= useState(false)
           setInvalidUser(false)
 
 
-          history.push(`/profile/${profileId}`)
-          console.log(currentUser)
+          history.push("/")
+
         }
       });
-  };
+    };
+    console.log(currentUser._id)
 
   if (loading && !invalidUser) {
     return (
@@ -74,6 +76,10 @@ const [loading, setLoading]= useState(false)
     <>
       <Wrapper>
         <FormContainer>
+          <div>Not a user?
+          <StyledNavLink to= "/new-user">Make a profile!</StyledNavLink> 
+             
+             </div>
           <Form onSubmit={onSubmitHandler}>
             <Input
               type="name"
@@ -131,4 +137,22 @@ const Wrapper = styled.div`
   width: 100%;
 `;
 
+
+const StyledNavLink = styled(NavLink)`
+padding: 10px;
+color: #669966;
+  margin-left: 10px;
+  font-family: var(--font-body);
+  text-decoration: none;
+  outline: none;
+
+  &:hover {
+    color: #336699;
+  }
+
+  &.active {
+    color: #336699;
+
+  }
+`
 export default Login;

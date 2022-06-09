@@ -24,7 +24,7 @@ padding: 10px;
 padding: 10px;
 
 color: #336699;
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   text-decoration: none;
   outline: none;
 

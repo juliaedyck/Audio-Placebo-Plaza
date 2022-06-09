@@ -1,10 +1,15 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
+@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Jost&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
 :root {
-    --font-heading: 'Play', sans-serif;
-	--font-body: 'Archivo', sans-serif;
+	--font-heading: 'Roboto', sans-serif;
+	--font-body: 'Play', sans-serif;
 	--color-pink: #f7c2ce;
 	--color-green: #669966;
     --color-blue: #336699;

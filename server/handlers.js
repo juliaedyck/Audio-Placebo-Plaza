@@ -148,7 +148,48 @@ console.log(req.body)
   }
 };
 
+//// fillForm
 
+const fillForm = async (req, res) => {
+  try {
+    const {
+
+      favSound,
+      noise,
+      _id
+    } = req.body;
+console.log(req.body)
+    const client = new MongoClient(MONGO_URI, options);
+    await client.connect();
+    const db = client.db("AudioPlacebo");
+
+    ///findOne(_id)
+    ///push placeboId into favourites array
+    // updateOne 
+    
+    
+    const updateProfile = await db.collection("users").updateOne(
+      { _id },
+      { $set: { favSound: favSound,
+        noise: noise }, }
+        
+        );
+        const findUser = await db.collection("users").findOne({_id})
+
+    await client.close();
+    if (updateProfile.modifiedCount) {
+      return res
+        .status(200)
+        .json({ status: 200, message: "success", data: findUser });
+    } else {return res
+      .status(400)
+      .json({ status: 200, message: "user not updated", data: findUser });}
+    
+  } catch (err) {
+    console.log(err)
+    res.status(400).json({ status: 500, mesage: "error", error:err });
+  }
+};
 
   //getPlacebo
 
@@ -195,4 +236,4 @@ try {
 
   }
 
-  module.exports = {addUser, getPlacebo, getUserByPassword,  likePlacebo, getUserById, getPlacebos}
+  module.exports = {addUser, getPlacebo, getUserByPassword,  likePlacebo, getUserById, getPlacebos, fillForm}

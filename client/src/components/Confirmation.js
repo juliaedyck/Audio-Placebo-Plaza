@@ -60,18 +60,14 @@ const handleLike = () => {
         .catch((err) => { console.log("error")
         });
     }, []);
-//  console.log(placebo)
 
-//  let url = placebo[0].url
-
-// const myPlacebo = placebo[0].url
-// console.log(myPlacebo)
 
 return (
-    <>
-
+<>
+{loading ? ("loading") : (
+  <>
     <div>Your Audio Placebo: </div>
-    Favourite it to save for later
+    <p>Favourite it to save for later</p>
     
 
     <span>
@@ -91,7 +87,10 @@ return (
                 onChange={(ev) => setNotes(ev.target.value)}
               />
               </div>
-<ResponsiveEmbed style="border: 0; width: 100%; height: 42px;" src={placebo?.url} seamless/>
+              <Div>
+<ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
+</>
+)}
     </>
 )
 
@@ -113,6 +112,14 @@ const Input = styled.input`
   width: 125px;
   margin-left: 10px;
 `;
+
+
+
+const Div = styled.div`
+border: red solid 1px;
+height: 50px;
+`
+
 
 
 

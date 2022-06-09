@@ -8,19 +8,23 @@ const Form = () => {
 
 
      //state variables here
-  const [firstName, setFirstName] = useState()
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
+  // const [firstName, setFirstName] = useState()
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  const [favSound, setFavSound]= useState("")
+  const [noise, setNoise]= useState("")
   const [formData, setFormData] = useState("");
   const [calming, setCalming] = useState();
   const [embodied, setEmbodied]= useState();
   const [voices, setVoices]=useState();
-  
+  const [playing, setPlaying] = useState(false)
   const { loggedIn, setLoggedIn, currentUser, setCurrentUser, password, setPassword} = useContext(CurrentUserContext)
 
   const history = useHistory();
   let audio1 = new Audio("/isotones.mp3")
   let audio2 = new Audio("/VLF+short.mp3")
+
+  
 // let audio = isotones
 
   const start1 = () => {
@@ -31,38 +35,49 @@ const Form = () => {
     audio2.play()
   }
 
+  const playPause1 = () => {
+
+    // Get state of song
+    // let isPlaying = this.state.isPlaying;
+
+    if (playing) {
+      // Pause the song if it is playing
+     audio1.pause();
+     setPlaying(false)
+     console.log("PAUSE")
+    } else {
+
+      // Play the song if it is paused
+     audio1.play();
+     setPlaying(true)
+    }
+
+  };
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
-    if (
-      firstName &&
-      lastName &&
-      email &&
-      password) 
-      {
-      fetch(`/new-user`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          password: password,
-          favourites: [],
 
-        }),
-      })
-        .then((res) => res.json())
-        .then((response) => {
-          if (response.status === 200) {
-            // console.log(response)
-            localStorage.setItem("firstName", JSON.stringify(response.message.firstName));
-       
-            setCurrentUser(response.message)
-            console.log(currentUser)
+    fetch("/fill-form", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        _id: currentUser._id,
+        noise: noise,
+        favSound: favSound
+
+
+      })}
+  )
+  .then((res) => res.json())
+  .then((data) => {
+      console.log(data)
+      setCurrentUser(data.data)
+
+     })
+  
 
             if (embodied === true && voices === false) {
             history.push("/confirmed/62a0a11e5173fa8e3f126f03");
@@ -74,11 +89,17 @@ const Form = () => {
             else if (voices === true && calming === true)
             {
               history.push("/confirmed/62a0f30921d84c85e88f4b70");
-            }
+            }  
+            else if (voices === true && calming === true && embodied !== true)
+            {
+              history.push("/confirmed/62a253957c8d6e6823eeabb9");
+            } 
+            else if (voices !== true && calming !== true && embodied !== true)
+            {
+              history.push("/confirmed/62a255437c8d6e6823eeabba");
+            } else {history.push("/confirmed/62a257047c8d6e6823eeabbb");}
           }
-        });
-    }
-  };
+
 
   const handleChange = (value, name) => {
     setFormData({ ...formData, [name]: value });
@@ -87,40 +108,14 @@ const Form = () => {
       <Container>
         <TheForm onSubmit={handleSubmit}>
           <Wrapper>
-            <InfoWrapper>
-              <Input2
-                type="text"
-                placeholder="First Name"
-                value={firstName}
-                onChange={(ev) => setFirstName(ev.target.value)}
-              />
-              <Input2
-                type="text"
-                placeholder="Last Name"
-                value={lastName}
-                onChange={(ev) => setLastName(ev.target.value)}
-              />
-              <Input2
-                type="text"
-                placeholder="Email"
-                value={email}
-                onChange={(ev) => setEmail(ev.target.value)}
-              />
-
-              <Input2
-                type="text"
-                placeholder="create a password"
-                value={password}
-                onChange={(ev) => setPassword(ev.target.value)}
-              />
-            </InfoWrapper>
+            
             <div>
               have you tried any of the following practices? (check all that
               apply)
             </div>
             <OptionsWrapper>
               <Input2 type="checkbox" id="soundscapes" />
-              <label for="soundscapes">   <a href="https://en.wikipedia.org/wiki/Soundscape" target="popup" onclick="window.open('../html-link.htm','name','width=600,height=400')">
+              <label for="soundscapes">   <a href="https://en.wikipedia.org/wiki/Soundscape" target="_blank" onclick="window.open('https://en.wikipedia.org/wiki/Soundscape','name','width=600,height=400')">
                 soundscapes      </a> </label>
     
               <Input2 type="checkbox" id="nature sounds" />
@@ -129,7 +124,7 @@ const Form = () => {
               <a href="https://www.youtube.com/watch?v=Jll0yqdQclw" target="popup" onclick="window.open('https://www.youtube.com/watch?v=Jll0yqdQclw,'name','width=600,height=400')">nature sounds</a></label>
 
               <Input2 type="checkbox" id="isochronic tones" />
-              <label for="isochronic tones"><button onClick={start1}>isochronic tones</button> </label>
+              <label for="isochronic tones"><div onClick={playPause1}>isochronic tones</div> </label>
        
 
               <Input2 type="checkbox" id="astral noise" />
@@ -137,7 +132,7 @@ const Form = () => {
 
               <Input2 type="checkbox" id="MUZAK" />
               <label for="MUZAK">
-              <a href="https://en.wikipedia.org/wiki/Muzak" target="popup" onclick="window.open('https://en.wikipedia.org/wiki/Muzak,'name','width=600,height=400')">MUZAK</a>
+              <a href="https://en.wikipedia.org/wiki/Muzak" target="popup" onclick="window.open('https://en.wikipedia.org/wiki/Muzak,'name','resizable,width=600,height=400'); return false;">MUZAK</a>
             </label>
 
               <Input2 type="checkbox" id="deep listening" />
@@ -196,26 +191,26 @@ const Form = () => {
             </OptionsWrapper>
             <ExperienceWrapper>
               what kind of experience are you seeking?
-              <Input2 type="checkbox" id="calming" onChange={() => setCalming(true)}/>
+              <Input2 type="radio" name= "experience" id="calming" onChange={() => setCalming(true)}/>
               <label for="calming"> calming </label>
 
-              <Input2 type="checkbox" id="energizing"  onChange={() => setCalming(false)}/>
+              <Input2 type="radio" name= "experience" id="energizing"  onChange={() => setCalming(false)}/>
               <label for="energizing"> energizing </label>
 
               <div>
                 Are you seeking an embodied/visceral or cognitage/emotional
                 response?
-                <Input2 type="checkbox" id="embodied/visceral" onChange={() => setEmbodied(true)}/>
+                <Input2 type="radio" id="embodied/visceral" onChange={() => setEmbodied(true)}/>
                 <label for="embodied/visceral"> embodied/visceral </label>
-                <Input2 type="checkbox" id="cognitage/emotional" onChange={() => setEmbodied(false)}/>
+                <Input2 type="radio" id="cognitage/emotional" onChange={() => setEmbodied(false)}/>
                 <label for="cognitage/emotional"> cognitage/emotional </label>
               </div>
 
               <div>
               Would you like one or many voices to directly address you as a listener? 
-                <Input2 type="checkbox" id="voices"  onChange={() => setVoices(true)}/>
+                <Input2 type="radio" name= "voice" id="voices"  onChange={() => setVoices(true)}/>
                 <label for="voices"> Yes </label>
-                <Input2 type="checkbox" id="no-voice"  onChange={() => setVoices(false)} />
+                <Input2 type="radio"  name= "voice" id="no-voice"  onChange={() => setVoices(false)} />
                 <label for="no-voice"> No</label>
               </div>
 
@@ -225,23 +220,23 @@ const Form = () => {
 
             <NoiseWrapper>
               what is your favourite color of noise?
-              <Input2 type="checkbox" id="white" />
+              <Input2 type="radio" name="color" id="white" onChange={() => setNoise("white")}/>
               <label for="white"> white </label>
-              <Input2 type="checkbox" id="pink" />
+              <Input2 type="radio" name="color" id="pink" onChange={() => setNoise("pink")}/>
               <label for="pink"> pink </label>
-              <Input2 type="checkbox" id="brown" />
+              <Input2 type="radio" name="color" id="brown" onChange={() => setNoise("brown")} />
               <label for="brown"> brown </label>
             </NoiseWrapper>
             Do you have any sonic allergies or have you ever experienced adverse
             reactions to specific sounds?
             <Input type="text" placeholder="" />
             Do you have a favorite sound?
-            <Input type="text" placeholder="" />
+            <Input type="text" placeholder=""  onChange={(ev) => setFavSound(ev.target.value)}/>
           </Wrapper>
 
           <Button
-            type="submit"
-            disabled={!( firstName && lastName && email && password) ? true : false}
+            // type="submit"
+            // disabled={!( firstName && lastName && email && password) ? true : false}
           >
             Confirm
           </Button>
@@ -300,6 +295,7 @@ const Container = styled.div`
   margin-top: 50px;
   display: flex;
   flex-direction: column;
+  font-family: var(--font-body);
 `;
 
 
