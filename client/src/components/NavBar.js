@@ -13,7 +13,7 @@ return (
     <StyledNavLink to= "/About">About</StyledNavLink> 
 
     {currentUser ? <Span>
-            <StyledNavLink to= "/Profile/:profileId">{currentUser.firstName}</StyledNavLink>
+              <StyledNavLink to={ `/profile/${currentUser._id}`}> {currentUser.firstName}</StyledNavLink>
             </Span>
             :
             

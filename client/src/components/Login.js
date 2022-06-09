@@ -39,27 +39,29 @@ const [loading, setLoading]= useState(false)
       .then((data) => {
         console.log(data);
         if (data.status === 400) {
-            setInvalidUser(true);
+            setInvalidUser(true)
+            // console.log(data.data)
           }
        
   
         if (data.status === 200) {
-        //   console.log("logged in");
+            setCurrentUser(data.data)
+            setProfileId(data.data._id)
+            console.log(data.data)
           window.sessionStorage.setItem(
             "data",
-            JSON.stringify(currentUser.firstName)
+            JSON.stringify(currentUser)
           );
-          setCurrentUser(data.data);
-          setProfileId(data.data._id);
-          setLoggedIn(true);
+          setLoggedIn(true)
           setLoading(false)
-          setInvalidUser(false);
+          setInvalidUser(false)
+
 
           history.push(`/profile/${profileId}`)
+          console.log(currentUser)
         }
       });
   };
-  console.log(firstName)
 
   if (loading && !invalidUser) {
     return (

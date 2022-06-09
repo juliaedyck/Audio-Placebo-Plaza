@@ -65,7 +65,6 @@ const client = new MongoClient(MONGO_URI, options);
 
 try {
   await client.connect();
-  console.log("connected")
   const db = client.db("AudioPlacebo")
   const profile = await db.collection("users").findOne({_id: id})
   console.log(profile)

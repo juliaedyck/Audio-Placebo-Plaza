@@ -36,7 +36,7 @@ express()
   .use('/', express.static(__dirname + '/'))
 
 //////// endpoints
-.get("/profile/:id", getUserById)
+.get("/get-profile/:id", getUserById)
 .get("/get-placebo/:id", getPlacebo)
 .get("/get-placebos", getPlacebos)
 .post("/new-user", addUser)
