@@ -98,8 +98,8 @@ return (
 const Button = styled.button`
   font-family: var(--font-heading);
   background: #336699;
-  height: 30px;
-  width: 200px;
+  height: 32px;
+  width: 205px;
   border-radius: 16px;
   border: none;
   cursor: pointer;
@@ -132,10 +132,11 @@ flex-direction: column;
 align-items: center;
 `
 const Input2 = styled(Input)`
-  width: 175px;
-  margin: 10px;
-  padding: 5px;
-  border-radius: 16px;
+ margin-bottom: 10px;
+  border-radius: 20px;
+  height: 30px;
+  width: 200px;
+  border: 2px solid #f7c2ce;
 `;
 const Container = styled.div`
   margin-top: 50px;

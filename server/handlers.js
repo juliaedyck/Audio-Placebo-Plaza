@@ -132,7 +132,10 @@ console.log(req.body)
 
     const updateProfile = await db.collection("users").updateOne(
       { _id: _id },
-      { $set: { favourites: placeboId }, }
+      // { $set: { favourites: placeboId } }
+
+      {$push: 
+        {favourites: placeboId}}
 
     );
     await client.close();

@@ -96,7 +96,7 @@ const [loading, setLoading]= useState(false)
               maxLength={100}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <button>log in</button>
+            <Button>log in</Button>
           </Form>
         </FormContainer>
       </Wrapper>
@@ -113,14 +113,23 @@ const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 10px;
+
 
 
 `;
 
-const Input = styled.input``;
+const Input = styled.input`
+  margin-bottom: 10px;
+  border-radius: 20px;
+  height: 30px;
+  width: 200px;
+  border: 2px solid #f7c2ce;
+  `;
 
 const Form = styled.form`
   /* z-index: 2; */
+  margin-top: 20px;
   display: flex;
   flex-direction: column;
 
@@ -131,6 +140,9 @@ color: #669966;
 const FormContainer = styled.div`
   /* z-index: 2; */
   /* position: absolute; */
+  margin-top: 50px;
+  color: #669966;
+  font-family: var(--font-body);
 `;
 
 const Wrapper = styled.div`
@@ -144,7 +156,6 @@ const Wrapper = styled.div`
 const StyledNavLink = styled(NavLink)`
 padding: 10px;
 color: #669966;
-  margin-left: 10px;
   font-family: var(--font-body);
   text-decoration: none;
   outline: none;
@@ -158,4 +169,25 @@ color: #669966;
 
   }
 `
-export default Login;
+const Button = styled.button`
+font-family: var(--font-heading);
+background: #336699;
+height: 32px;
+  width: 205px;
+border-radius: 20px;
+border: none;
+cursor: pointer;
+color: #000;
+
+  &:hover {
+    background: #669966;
+    transition: 300ms ease-in-out;
+  }
+
+  &:disabled {
+    background: #669966;
+    cursor: not-allowed;
+    transition: none;
+  }
+`
+export default Login

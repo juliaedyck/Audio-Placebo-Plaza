@@ -24,7 +24,6 @@ const Profile = () => {
         fetch(`/get-profile/${profileId}`)
         .then((res) => res.json())
         .then((data) => {
-            console.log(data);
             setCurrentUser(data.data)
             setIsLoading(false)
             
@@ -33,22 +32,6 @@ const Profile = () => {
         
     }, [profileId]);
     
-    
-    
-    ///fetch placebo from id (favourite id)
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //     fetch(`/get-placebo/${currentUser.favourites}`)
-    //     .then((res) => res.json())
-    //     .then((data) => {
-    //         console.log(data);
-    //         setPlacebo(data.data)
-    //         setIsLoading(false)
-            
-            
-    //     });
-        
-    // }, [profileId]);
 
 
     ////get all placebos and conditionally render on page
@@ -57,7 +40,6 @@ const fetchPlacebos = () => {
     fetch("/get-placebos")
       .then((res) => res.json())
       .then((data) => {
-          console.log(data.data)
         setPlacebos(data.data);
         setIsLoading(false);
       });
@@ -69,6 +51,7 @@ const fetchPlacebos = () => {
   }, [profileId]);
     
 console.log(currentUser)
+console.log(placebos)
     return (
       <Wrapper>
         {isLoading ? (
@@ -121,10 +104,8 @@ font-size: 20px;`
 
 
 const Wrapper = styled.div`
-
 display: flex;
 flex-direction: row;
-justify-content: flex-start;
 `
 const P = styled.p`
 margin-bottom: 10px;

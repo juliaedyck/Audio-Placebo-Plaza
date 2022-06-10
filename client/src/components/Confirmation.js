@@ -70,7 +70,6 @@ return (
     <div>Your Audio Placebo: </div>
     
     <PlaceboWrapper>
-      <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
    
 
     <span>
@@ -90,6 +89,7 @@ return (
                 onChange={(ev) => setNotes(ev.target.value)}
               />
               </div>
+      <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
               </PlaceboWrapper>
               </Wrap>
 </>
@@ -106,7 +106,7 @@ flex-direction: column;
 `
 
 const HeartButton = styled.span`
-z-index: 2;
+/* z-index: 2; */
 max-height: 30px;
 `
 
@@ -130,7 +130,7 @@ margin-top: 50px;
 `
 const Div = styled.div`
 width: 600px;
-height: 50px;
+height: 30px;
 `
 
 
