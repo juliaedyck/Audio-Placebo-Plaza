@@ -1,13 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-/* @import url('https://fonts.googleapis.com/css2?family=Amarante&family=Jost&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
-
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap'); */
 
 :root {
 	--font-heading: 'Roboto', sans-serif;

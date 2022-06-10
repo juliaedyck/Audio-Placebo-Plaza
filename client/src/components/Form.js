@@ -16,6 +16,8 @@ const Form = () => {
   const [embodied, setEmbodied] = useState();
   const [voices, setVoices] = useState();
   const [playing, setPlaying] = useState(false);
+  
+  
   const {
     loggedIn,
     setLoggedIn,
@@ -24,36 +26,53 @@ const Form = () => {
     password,
     setPassword,
   } = useContext(CurrentUserContext);
-
+  
   const history = useHistory();
   let audio1 = new Audio("/isotones.mp3");
   let audio2 = new Audio("/VLF+short.mp3");
+  const [audioElement1, setAudioElement1]= useState(audio1)
+  const [audio, setAudio] = useState({isotones: audio1, vlf: audio2})
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null)
+  
+ 
+
+
+
 
   // let audio = isotones
 
-  const start1 = () => {
-    audio1.play();
-  };
+  // const start1 = () => {
+  //   audio1.play();
+  // };
+  
+  const playPause = (soundname) => {
+    if (currentlyPlaying === soundname) {
+      audio[currentlyPlaying].pause();
+      setCurrentlyPlaying(null);
 
-  const start2 = () => {
-    audio2.play();
-  };
-
-  const playPause1 = () => {
+    }
     // Get state of song
     // let isPlaying = this.state.isPlaying;
-
-    if (playing) {
+    else if (currentlyPlaying) {
       // Pause the song if it is playing
-      audio1.pause();
-      setPlaying(false);
-      console.log("PAUSE");
+      audio[currentlyPlaying].pause();
+      audio[soundname].play();
+      setCurrentlyPlaying(soundname);
+
     } else {
       // Play the song if it is paused
-      audio1.play();
-      setPlaying(true);
+      audio[soundname].play();
+      setCurrentlyPlaying(soundname);
+      console.log("play");
     }
   };
+
+const newWindow = (url) => {
+  window.open(url, "newwindow", "width=500,height=350");
+  return false;
+};
+
+
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -107,10 +126,11 @@ const Form = () => {
               <Input2 type="checkbox" id="soundscapes"  />
               <label for="soundscapes">
                 {" "}
-                <StyledLink href="https://en.wikipedia.org/wiki/Soundscape"
-                  // href="https://en.wikipedia.org/wiki/Soundscape"
+                <StyledLink 
+                // href="https://en.wikipedia.org/wiki/Soundscape"
+                onClick={()=>newWindow("https://en.wikipedia.org/wiki/Soundscape")}
                   target="_blank"
-                  // onclick="window.open('https://en.wikipedia.org/wiki/Soundscape','name','width=600,height=400')"
+                  // onClick="window.open('https://en.wikipedia.org/wiki/Soundscape','name','width=600,height=400')"
                 >
                   soundscapes{" "}
                 </StyledLink>{" "}
@@ -123,7 +143,7 @@ const Form = () => {
                 <a
                   href="https://www.youtube.com/watch?v=Jll0yqdQclw"
                   target="popup"
-                  onclick="window.open('https://www.youtube.com/watch?v=Jll0yqdQclw,'name','width=600,height=400')"
+                  onClick="window.open('https://www.youtube.com/watch?v=Jll0yqdQclw,'name','width=600,height=400')"
                 >
                   nature sounds
                 </a>
@@ -131,17 +151,16 @@ const Form = () => {
             </Choice>
 
             <Choice>
-              <Input2 type="checkbox" id="isochronic tones" />
-              <label for="isochronic tones">
-                <div onClick={playPause1}>isochronic tones</div>{" "}
+              <Input2 type="checkbox" id="isotones" />
+              <label for="isotones">
+                <div onClick={() => playPause("isotones")}>isochronic tones</div>
               </label>
             </Choice>
 
             <Choice>
-              <Input2 type="checkbox" id="astral noise" />
-              <label for="astral noise">
-                {" "}
-                <button onClick={start2}>astral noise</button>{" "}
+              <Input2 type="checkbox" id="vlf" />
+              <label for="vlf">
+                <div onClick={() => playPause("vlf")}>astral noise</div>
               </label>
             </Choice>
 
@@ -151,7 +170,7 @@ const Form = () => {
                 <a
                   href="https://en.wikipedia.org/wiki/Muzak"
                   target="popup"
-                  onclick="window.open('https://en.wikipedia.org/wiki/Muzak,'name','resizable,width=600,height=400'); return false;"
+                  onClick="window.open('https://en.wikipedia.org/wiki/Muzak,'name','resizable,width=600,height=400'); return false;"
                 >
                   MUZAK
                 </a>
@@ -164,7 +183,7 @@ const Form = () => {
                 <a
                   href="https://monoskop.org/images/2/2c/Oliveros_Pauline_Deep_Listening_A_Composers_Sound_Practice_2005.pdf"
                   target="popup"
-                  onclick="window.open('https://monoskop.org/images/2/2c/Oliveros_Pauline_Deep_Listening_A_Composers_Sound_Practice_2005.pdf,'name','width=600,height=400')"
+                  onClick="window.open('https://monoskop.org/images/2/2c/Oliveros_Pauline_Deep_Listening_A_Composers_Sound_Practice_2005.pdf,'name','width=600,height=400')"
                 >
                   {" "}
                   deep listening
@@ -183,7 +202,7 @@ const Form = () => {
                 <a
                   href="https://youngascensionhypnosis.bandcamp.com/track/you-cant-fuck-it-up"
                   target="popup"
-                  onclick="window.open('https://youngascensionhypnosis.bandcamp.com/track/you-cant-fuck-it-up')"
+                  onClick="window.open('https://youngascensionhypnosis.bandcamp.com/track/you-cant-fuck-it-up')"
                 >
                   {" "}
                   hypnosis
@@ -197,7 +216,7 @@ const Form = () => {
                 <a
                   href="https://www.healthline.com/health/sound-bath"
                   target="popup"
-                  onclick="window.open('https://www.healthline.com/health/sound-bath')"
+                  onClick="window.open('https://www.healthline.com/health/sound-bath')"
                 >
                   {" "}
                   sound baths
@@ -217,7 +236,7 @@ const Form = () => {
                 <a
                   href="https://en.wikipedia.org/wiki/Role-playing"
                   target="popup"
-                  onclick="window.open('https://en.wikipedia.org/wiki/Role-playing')"
+                  onClick="window.open('https://en.wikipedia.org/wiki/Role-playing')"
                 >
                   {" "}
                   roleplay
@@ -232,7 +251,7 @@ const Form = () => {
                 <a
                   href="https://www.youtube.com/watch?v=bbPg3Dc68cA"
                   target="popup"
-                  onclick="window.open('https://www.youtube.com/watch?v=bbPg3Dc68cA')"
+                  onClick="window.open('https://www.youtube.com/watch?v=bbPg3Dc68cA')"
                 >
                   {" "}
                   ASMR
@@ -245,7 +264,7 @@ const Form = () => {
                 <a
                   href="https://laughteryoga.org/"
                   target="popup"
-                  onclick="window.open('https://laughteryoga.org/')"
+                  onClick="window.open('https://laughteryoga.org/')"
                 >
                   {" "}
                   laughter yoga
@@ -264,7 +283,7 @@ const Form = () => {
                 <a
                   href="https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s"
                   target="popup"
-                  onclick="window.open('https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s')"
+                  onClick="window.open('https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s')"
                 >
                   {" "}
                   guided meditation{" "}
@@ -408,7 +427,16 @@ const Choice = styled.div`
   }
 `;
 
-const StyledLink = styled(Link)`
+// const StyledLink = styled(Link)`
+// text-decoration: none;
+//   color: var(--color-blue);
+//   &:hover {
+//     color: var(--color-green);
+//     transition: 300ms ease-in-out;
+//   }
+// `
+
+const StyledLink = styled.a`
 text-decoration: none;
   color: var(--color-blue);
   &:hover {
@@ -416,6 +444,7 @@ text-decoration: none;
     transition: 300ms ease-in-out;
   }
 `
+
 const Experience = styled.div`
 padding-top: 20px;
 padding-bottom: 20px;
@@ -489,7 +518,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  margin-top: 50px;
+  margin-top: 10px;
   padding: 40px;
   display: flex;
   flex-direction: column;
