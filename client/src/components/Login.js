@@ -123,6 +123,9 @@ const Form = styled.form`
   /* z-index: 2; */
   display: flex;
   flex-direction: column;
+
+color: #669966;
+  font-family: var(--font-body);
 `;
 
 const FormContainer = styled.div`

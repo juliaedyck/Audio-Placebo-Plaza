@@ -66,12 +66,15 @@ return (
 <>
 {loading ? ("loading") : (
   <>
+  <Wrap>
     <div>Your Audio Placebo: </div>
-    <p>Favourite it to save for later</p>
     
+    <PlaceboWrapper>
+      <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
+   
 
     <span>
-   
+    Favourite it to save for later
     <HeartButton isLiked={isLikedByCurrentUser} 
     onClick={handleLike} 
     >
@@ -87,19 +90,19 @@ return (
                 onChange={(ev) => setNotes(ev.target.value)}
               />
               </div>
-              <Div>
-<ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
+              </PlaceboWrapper>
+              </Wrap>
 </>
 )}
     </>
 )
 
 }
-const PlaceboContainer = styled.div`
-
+const Wrap = styled.div`
+margin-top: 30px;
 display: flex;
 align-items: center;
-justify-content: center;
+flex-direction: column;
 `
 
 const HeartButton = styled.span`
@@ -114,9 +117,19 @@ const Input = styled.input`
 `;
 
 
-
+const PlaceboWrapper = styled.div`
+display: flex;
+flex-direction: column;
+box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.14);
+  background-color: var(--color-pink);
+height: 200px;
+width: 600px;
+border-radius: 30px;
+padding: 80px;
+margin-top: 50px;
+`
 const Div = styled.div`
-border: red solid 1px;
+width: 600px;
 height: 50px;
 `
 

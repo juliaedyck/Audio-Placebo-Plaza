@@ -1,15 +1,17 @@
 import { createGlobalStyle } from "styled-components";
 
 export default createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Amarante&family=Jost&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Amarante&family=Jost&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
 
 @import url('https://fonts.googleapis.com/css2?family=Amarante&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap'); */
+
 :root {
 	--font-heading: 'Roboto', sans-serif;
-	--font-body: 'Play', sans-serif;
+	--font-body: 'Mulish', sans-serif;
 	--color-pink: #f7c2ce;
 	--color-green: #669966;
     --color-blue: #336699;
@@ -41,7 +43,7 @@ time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+	/* vertical-align: baseline; */
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, 
