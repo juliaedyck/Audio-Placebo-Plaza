@@ -140,7 +140,7 @@ color: #669966;
 const FormContainer = styled.div`
   /* z-index: 2; */
   /* position: absolute; */
-  margin-top: 50px;
+  margin-top: 100px;
   color: #669966;
   font-family: var(--font-body);
 `;
@@ -170,14 +170,14 @@ color: #669966;
   }
 `
 const Button = styled.button`
-font-family: var(--font-heading);
+font-family: var(--font-body);
 background: #336699;
 height: 32px;
   width: 205px;
 border-radius: 20px;
 border: none;
 cursor: pointer;
-color: #000;
+color: #ffff;
 
   &:hover {
     background: #669966;

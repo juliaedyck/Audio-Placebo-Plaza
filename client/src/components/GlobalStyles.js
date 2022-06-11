@@ -3,8 +3,11 @@ import { createGlobalStyle } from "styled-components";
 export default createGlobalStyle`
 
 :root {
-	--font-heading: 'Roboto', sans-serif;
-	--font-body: 'Mulish', sans-serif;
+	--font-heading: 'Amarante', cursive;
+	/* --font-body: 'Mulish', sans-serif; */
+	--font-body: 'Inter', sans-serif;
+
+
 	--color-pink: #f7c2ce;
 	--color-green: #669966;
     --color-blue: #336699;

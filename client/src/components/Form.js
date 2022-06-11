@@ -118,7 +118,7 @@ const newWindow = (url) => {
       <TheForm onSubmit={handleSubmit}>
         <Wrapper>
           <Div>
-            have you tried any of the following practices? (check all that
+            Have you tried any of the following practices? (check all that
             apply)
           </Div>
           <OptionsWrapper>
@@ -518,7 +518,7 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-  margin-top: 10px;
+
   padding: 40px;
   display: flex;
   flex-direction: column;
@@ -528,13 +528,13 @@ const Container = styled.div`
 `;
 
 const TheForm = styled.form`
-  margin-top: 5px;
+  margin-top: 80px;
   display: flex;
   flex-direction: column;
 `;
 
 const Button = styled.button`
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   background: #336699;
   height: 30px;
   width: 200px;
@@ -542,7 +542,7 @@ const Button = styled.button`
   align-self: flex-start;
   border: none;
   cursor: pointer;
-  color: #000;
+  color: #ffff;
   margin-left: 10px;
 
   &:hover {

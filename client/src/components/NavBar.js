@@ -9,15 +9,15 @@ const NavBar = () => {
 return (
 
     <Wrapper>
-    <StyledNavLink to= "/Form">Get your Audio Placebo</StyledNavLink> 
-    <StyledNavLink to= "/About">About</StyledNavLink> 
+    <StyledNavLink to= "/Form">GET AN AUDIO PLACEBO</StyledNavLink> 
+    <StyledNavLink to= "/About">ABOUT</StyledNavLink> 
 
     {currentUser ? <Span>
               <StyledNavLink to={ `/profile/${currentUser._id}`}> {currentUser.firstName}</StyledNavLink>
             </Span>
             :
             
-    <StyledNavLink to= "/Login">Login</StyledNavLink> 
+    <StyledNavLink to= "/Login">LOG IN</StyledNavLink> 
             }
 
 
@@ -28,8 +28,9 @@ return (
 const Wrapper = styled.div`
 display: flex;
 justify-content: right;
-align-items: center;
+padding-bottom: 0;
 background-color:  #f7c2ce;
+height: fit-content;
 `
 
 const StyledNavLink = styled(NavLink)`

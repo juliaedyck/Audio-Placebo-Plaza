@@ -96,14 +96,15 @@ return (
 }
 
 const Button = styled.button`
-  font-family: var(--font-heading);
+  font-family: var(--font-body);
   background: #336699;
   height: 32px;
   width: 205px;
   border-radius: 16px;
   border: none;
   cursor: pointer;
-  color: #000;
+  color: #ffff;
+
 
 
   &:hover {

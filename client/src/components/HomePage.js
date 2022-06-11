@@ -7,7 +7,7 @@ const HomePage = () => {
 return (
     <Wrapper>
     Homepage
-    <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;"/></Div>
+    {/* <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;"/></Div> */}
     
     </Wrapper>
 )

@@ -103,6 +103,7 @@ margin-top: 30px;
 display: flex;
 align-items: center;
 flex-direction: column;
+z-index: -1;
 `
 
 const HeartButton = styled.span`
@@ -131,6 +132,8 @@ margin-top: 50px;
 const Div = styled.div`
 width: 600px;
 height: 30px;
+z-index: 0;
+
 `
 
 
