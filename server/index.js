@@ -15,7 +15,8 @@ getUserByPassword,
 likePlacebo,
 getUserById,
 getPlacebos,
-fillForm
+fillForm,
+addNote
   } = require("./handlers");
 
 express()
@@ -43,6 +44,7 @@ express()
 .post("/new-user", addUser)
 .post("/login", getUserByPassword)
 .patch("/add-like", likePlacebo)
+.patch("/add-note/:id", addNote)
 .patch("/fill-form",fillForm)
 
 

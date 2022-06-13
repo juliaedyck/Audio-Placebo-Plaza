@@ -53,17 +53,19 @@ const fetchPlacebos = () => {
 console.log(currentUser)
 console.log(placebos)
     return (
-      <Wrapper>
+        <div>
         {isLoading ? (
-          "loading"
-        ) : (
-          <div>
+            "loading"
+            ) : (
+                <Wrapper>
               
             <Greeting>Hi {currentUser.firstName}!</Greeting>
             <NoiseSound>
             <NoiseWrapper>Your noise: <Span> {currentUser.noise}</Span></NoiseWrapper>
             <FavSound>Your favourite sound: <Span> {currentUser.favSound} </Span></FavSound>
             </NoiseSound>
+            <Div>
+                <P> Your Placebos:</P>
             {placebos
               ?.filter((placebo) => {
                 return currentUser.favourites.includes(placebo._id);
@@ -71,10 +73,11 @@ console.log(placebos)
               .map((placebo, index) => {
                 console.log(placebo);
                 return (
-                  <Div>
-                     <P> Your Placebos:</P>
+                //   <Div>
+                      <Placebo>
                     <ResponsiveEmbed src={placebo?.url} />
-                  </Div>
+                    </Placebo>
+                //   </Div>
                 );
 
                 //             if (currentUser.favourites.some((favourite) => favourite === placebo._id)) {
@@ -89,9 +92,10 @@ console.log(placebos)
                 // }
                 //             })
               })}
-          </div>
-        )}
+              </Div>
       </Wrapper>
+        )}
+          </div>
     );}
 
 const NoiseSound = styled.div`
@@ -104,12 +108,24 @@ font-size: 20px;`
 
 
 const Wrapper = styled.div`
+  font-family: var(--font-body);
+  color: var(--color-blue);
+margin-top: 50px;
+margin-left: 80px;
+padding: 20px;
+width: 100%;
 display: flex;
 flex-direction: row;
+align-items: space-between;
 `
 const P = styled.p`
 margin-bottom: 10px;
 `
+const Placebo = styled.div`
+height: 50px;
+width: 600px;
+`
+
 
 const Div = styled.div`
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.14);

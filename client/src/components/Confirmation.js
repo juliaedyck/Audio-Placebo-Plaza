@@ -44,6 +44,29 @@ const handleLike = () => {
        })
     }
 
+    const handleNote = ()=> {
+      // add a new BE endpoint for adding information on favorite collection
+
+      // call the endpoint by making a new API request
+      fetch(`/add-note/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          note: notes,
+        })}
+    )
+    .then((res) => res.json())
+    .then((data) => {
+        console.log(data)
+       })
+      // error handling
+
+      // on success, redirect users to homepage
+
+    }
 
     useEffect(() => {
       console.log("useEffect")
@@ -89,6 +112,7 @@ return (
                 onChange={(ev) => setNotes(ev.target.value)}
               />
               </div>
+              <button onClick={handleNote}>submit</button>
       <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
               </PlaceboWrapper>
               </Wrap>

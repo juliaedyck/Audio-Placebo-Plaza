@@ -132,7 +132,7 @@ console.log(req.body)
 
     const updateProfile = await db.collection("users").updateOne(
       { _id: _id },
-      // { $set: { favourites: placeboId } }
+
 
       {$push: 
         {favourites: placeboId}}
@@ -150,6 +150,34 @@ console.log(req.body)
     res.status(400).json({ status: 500, mesage: "error", error:err });
   }
 };
+
+//// add note
+
+const addNote = async (req, res)=> {
+
+  const _id = req.params.id
+  const {note} = req.body
+  const client = new MongoClient(MONGO_URI, options);
+  
+  try {
+    await client.connect();
+    console.log("connected")
+    const db = client.db("AudioPlacebo")
+    const result = await db.collection("sounds").findOneAndUpdate({_id: ObjectId(_id)}, {$set: {note}})
+    // console.log(placebo)
+    if (result) {
+      return res.status(200).json({ status: 200 });
+    } else {
+      return res
+        .status(400)
+        .json({ status: 400, message: "note not added" });
+    }    } catch (err){console.log(err)}
+
+
+}
+
+
+
 
 //// fillForm
 
@@ -239,4 +267,4 @@ try {
 
   }
 
-  module.exports = {addUser, getPlacebo, getUserByPassword,  likePlacebo, getUserById, getPlacebos, fillForm}
+  module.exports = {addUser, getPlacebo, getUserByPassword,  likePlacebo, getUserById, getPlacebos, fillForm, addNote}

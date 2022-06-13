@@ -123,37 +123,39 @@ const newWindow = (url) => {
           </Div>
           <OptionsWrapper>
             <Choice>
-              <Input2 type="checkbox" id="soundscapes"  />
+              <Input2 type="checkbox" id="soundscapes" />
               <label for="soundscapes">
-                {" "}
-                <StyledLink 
-                // href="https://en.wikipedia.org/wiki/Soundscape"
-                onClick={()=>newWindow("https://en.wikipedia.org/wiki/Soundscape")}
+                <StyledLink
+                  onClick={() =>
+                    newWindow("https://en.wikipedia.org/wiki/Soundscape")
+                  }
                   target="_blank"
-                  // onClick="window.open('https://en.wikipedia.org/wiki/Soundscape','name','width=600,height=400')"
                 >
-                  soundscapes{" "}
-                </StyledLink>{" "}
+                  soundscapes
+                </StyledLink>
               </label>
             </Choice>
 
             <Choice>
               <Input2 type="checkbox" id="nature sounds" />
               <label for="nature sounds">
-                <a
-                  href="https://www.youtube.com/watch?v=Jll0yqdQclw"
-                  target="popup"
-                  onClick="window.open('https://www.youtube.com/watch?v=Jll0yqdQclw,'name','width=600,height=400')"
+                <StyledLink
+                  onClick={() =>
+                    newWindow("https://www.youtube.com/watch?v=Jll0yqdQclw")
+                  }
+                  target="_blank"
                 >
                   nature sounds
-                </a>
+                </StyledLink>
               </label>
             </Choice>
 
             <Choice>
               <Input2 type="checkbox" id="isotones" />
               <label for="isotones">
-                <div onClick={() => playPause("isotones")}>isochronic tones</div>
+                <div onClick={() => playPause("isotones")}>
+                  isochronic tones
+                </div>
               </label>
             </Choice>
 
@@ -167,27 +169,30 @@ const newWindow = (url) => {
             <Choice>
               <Input2 type="checkbox" id="MUZAK" />
               <label for="MUZAK">
-                <a
-                  href="https://en.wikipedia.org/wiki/Muzak"
-                  target="popup"
-                  onClick="window.open('https://en.wikipedia.org/wiki/Muzak,'name','resizable,width=600,height=400'); return false;"
+                <StyledLink
+                  onClick={() =>
+                    newWindow("https://en.wikipedia.org/wiki/Muzak")
+                  }
+                  target="_blank"
                 >
                   MUZAK
-                </a>
+                </StyledLink>
               </label>
             </Choice>
 
             <Choice>
               <Input2 type="checkbox" id="deep listening" />
               <label for="deep listening">
-                <a
-                  href="https://monoskop.org/images/2/2c/Oliveros_Pauline_Deep_Listening_A_Composers_Sound_Practice_2005.pdf"
-                  target="popup"
-                  onClick="window.open('https://monoskop.org/images/2/2c/Oliveros_Pauline_Deep_Listening_A_Composers_Sound_Practice_2005.pdf,'name','width=600,height=400')"
+                <StyledLink
+                  onClick={() =>
+                    newWindow(
+                      "https://monoskop.org/images/2/2c/Oliveros_Pauline_Deep_Listening_A_Composers_Sound_Practice_2005.pdf"
+                    )
+                  }
+                  target="_blank"
                 >
-                  {" "}
                   deep listening
-                </a>
+                </StyledLink>
               </label>
             </Choice>
 
@@ -199,28 +204,30 @@ const newWindow = (url) => {
             <Choice>
               <Input2 type="checkbox" id="hypnosis" />
               <label for="hypnosis">
-                <a
-                  href="https://youngascensionhypnosis.bandcamp.com/track/you-cant-fuck-it-up"
-                  target="popup"
-                  onClick="window.open('https://youngascensionhypnosis.bandcamp.com/track/you-cant-fuck-it-up')"
+                <StyledLink
+                  onClick={() =>
+                    newWindow(
+                      "https://youngascensionhypnosis.bandcamp.com/track/you-cant-fuck-it-up"
+                    )
+                  }
+                  target="_blank"
                 >
-                  {" "}
                   hypnosis
-                </a>
+                </StyledLink>
               </label>
             </Choice>
 
             <Choice>
               <Input2 type="checkbox" id=" sound baths" />
               <label for="sound baths">
-                <a
-                  href="https://www.healthline.com/health/sound-bath"
-                  target="popup"
-                  onClick="window.open('https://www.healthline.com/health/sound-bath')"
+                <StyledLink
+                  onClick={() =>
+                    newWindow("https://www.healthline.com/health/sound-bath")
+                  }
+                  target="_blank"
                 >
-                  {" "}
                   sound baths
-                </a>
+                </StyledLink>
               </label>
             </Choice>
 
@@ -233,14 +240,14 @@ const newWindow = (url) => {
               <Input2 type="checkbox" id="roleplay " />
 
               <label for="roleplay">
-                <a
-                  href="https://en.wikipedia.org/wiki/Role-playing"
-                  target="popup"
-                  onClick="window.open('https://en.wikipedia.org/wiki/Role-playing')"
+                <StyledLink
+                  onClick={() =>
+                    newWindow("https://en.wikipedia.org/wiki/Role-playing")
+                  }
+                  target="_blank"
                 >
-                  {" "}
                   roleplay
-                </a>
+                </StyledLink>
               </label>
             </Choice>
 
@@ -248,27 +255,31 @@ const newWindow = (url) => {
               <Input2 type="checkbox" id="ASMR" />
 
               <label for="ASMR">
-                <a
-                  href="https://www.youtube.com/watch?v=bbPg3Dc68cA"
-                  target="popup"
-                  onClick="window.open('https://www.youtube.com/watch?v=bbPg3Dc68cA')"
+              <StyledLink
+                  onClick={() =>
+                    newWindow("https://www.youtube.com/watch?v=bbPg3Dc68cA")
+                  }
+                  target="_blank"
                 >
-                  {" "}
+
                   ASMR
-                </a>
+                  </StyledLink>
+
               </label>
             </Choice>
             <Choice>
               <Input2 type="checkbox" id="laughter yoga" />
               <label for="laughter yoga">
-                <a
-                  href="https://laughteryoga.org/"
-                  target="popup"
-                  onClick="window.open('https://laughteryoga.org/')"
+              <StyledLink
+                  onClick={() =>
+                    newWindow("https://laughteryoga.org/")
+                  }
+                  target="_blank"
                 >
-                  {" "}
+        
                   laughter yoga
-                </a>
+                  </StyledLink>
+
               </label>
             </Choice>
 
@@ -280,87 +291,82 @@ const newWindow = (url) => {
             <Choice>
               <Input2 type="checkbox" id="guided meditation" />
               <label for="guided meditation">
-                <a
-                  href="https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s"
-                  target="popup"
-                  onClick="window.open('https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s')"
+              <StyledLink
+                  onClick={() =>
+                    newWindow("https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s")
+                  }
+                  target="_blank"
                 >
-                  {" "}
-                  guided meditation{" "}
-                </a>
+              
+                  guided meditation
+                  </StyledLink>
+
               </label>
             </Choice>
           </OptionsWrapper>
           <ExperienceWrapper>
             <Experience>
-            what kind of experience are you seeking?
-            <Input2
-              type="radio"
-              name="experience"
-              id="calming"
-              onChange={() => setCalming(true)}
-              style={{border: "10px solid #EFE5CE"}}
-            />
-            <label for="calming"> calming </label>
-        
-            <Input2
-              type="radio"
-              name="experience"
-              id="energizing"
-              onChange={() => setCalming(false)}
-            />
-            <label for="energizing"> energizing </label>
+              What kind of experience are you seeking?
+              <Input2
+                type="radio"
+                name="experience"
+                id="calming"
+                onChange={() => setCalming(true)}
+                style={{ border: "10px solid #EFE5CE" }}
+              />
+              <label for="calming"> calming </label>
+              <Input2
+                type="radio"
+                name="experience"
+                id="energizing"
+                onChange={() => setCalming(false)}
+              />
+              <label for="energizing"> energizing </label>
             </Experience>
 
             <div>
-
-            <Experience>
-              Are you seeking an embodied/visceral or cognitage/emotional
-              response?
-              <Input2
-                type="radio"
-                name="response"
-                id="embodied/visceral"
-                onChange={() => setEmbodied(true)}
-              />
-      
-
-              <label for="embodied/visceral"> embodied/visceral </label>
-              <Input2
-                type="radio"
-                name="response"
-                id="cognitage/emotional"
-                onChange={() => setEmbodied(false)}
-              />
-              <label for="cognitage/emotional"> cognitage/emotional </label>
-            </Experience>
-
+              <Experience>
+                Are you seeking an embodied/visceral or cognitage/emotional
+                response?
+                <Input2
+                  type="radio"
+                  name="response"
+                  id="embodied/visceral"
+                  onChange={() => setEmbodied(true)}
+                />
+                <label for="embodied/visceral"> embodied/visceral </label>
+                <Input2
+                  type="radio"
+                  name="response"
+                  id="cognitage/emotional"
+                  onChange={() => setEmbodied(false)}
+                />
+                <label for="cognitage/emotional"> cognitage/emotional </label>
+              </Experience>
             </div>
             <div>
-            <Experience>
-
-              Would you like one or many voices to directly address you as a
-              listener?
-              <Input2
-                type="radio"
-                name="voice"
-                id="voices"
-                onChange={() => setVoices(true)}
-              />
-              <label for="voices"> Yes </label>
-              <Input2
-                type="radio"
-                name="voice"
-                id="no-voice"
-                onChange={() => setVoices(false)}
-              />
-              <label for="no-voice"> No</label>
-            </Experience>
-
+              <Experience>
+                Would you like one or many voices to directly address you as a
+                listener?
+                <Input2
+                  type="radio"
+                  name="voice"
+                  id="voices"
+                  onChange={() => setVoices(true)}
+                />
+                <label for="voices"> Yes </label>
+                <Input2
+                  type="radio"
+                  name="voice"
+                  id="no-voice"
+                  onChange={() => setVoices(false)}
+                />
+                <label for="no-voice"> No</label>
+              </Experience>
             </div>
           </ExperienceWrapper>
           <NoiseWrapper>
-            what is your favourite color of noise?
+            What is your favourite color of noise?
             <Input2
               type="radio"
               name="color"
@@ -384,21 +390,18 @@ const newWindow = (url) => {
             <label for="brown"> brown </label>
           </NoiseWrapper>
           <Experience>
-
-          Do you have any sonic allergies or have you ever experienced adverse
-          reactions to specific sounds?
-          <Input type="text" placeholder="" />
+            Do you have any sonic allergies or have you ever experienced adverse
+            reactions to specific sounds?
+            <Input type="text" placeholder="" />
           </Experience>
           <Experience>
-
-          Do you have a favorite sound?
-          <Input
-            type="text"
-            placeholder=""
-            onChange={(ev) => setFavSound(ev.target.value)}
-          />
+            Do you have a favorite sound?
+            <Input
+              type="text"
+              placeholder=""
+              onChange={(ev) => setFavSound(ev.target.value)}
+            />
           </Experience>
-
         </Wrapper>
 
         <Button
@@ -455,7 +458,7 @@ align-items: center;
 
 const OptionsWrapper = styled.div`
   box-shadow: 0px 0px 
-  10px 5px rgba(0, 0, 0, 0.14);
+  10px 5px rgba(0, 0, 0, 0.1);
 
   display: grid;
   justify-content: center;
@@ -489,7 +492,11 @@ const Input = styled.input`
   margin-left: 5px;
   border-radius: 20px;
   border: 2px solid #f7c2ce;
-  color: #f7c2ce;
+  &:focus { 
+    border: 2px solid #f7c2ce;
+    transition: 300ms ease-in-out;
+  }
+  /* color: #f7c2ce; */
 `;
 
 const Input2 = styled(Input)`
