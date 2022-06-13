@@ -1,10 +1,17 @@
 import styled from "styled-components"
 
+import photo from "../photos/064A4457.jpg"
+
+
+
 
 const About =()=> {
 
     return (
         <Wrapper>
+<ImgWrap>
+      <Img src={photo} alt="team photo"/>
+      </ImgWrap>
 <Div>
 Audio Placebo Plaza (APP) is Julia E. Dyck, Erin Gee and Vivian Li, a trio of woman-identified and non-gender conforming artists based in Montreal/Tiohtià:ke focused on the expansion of intersectional feminist methods of care, emotional labor, collaboration, and community in sound art. APP considers "placebo" as a complex, open-ended, and optimistic conceptual framework for work that embraces irony, play, and co-performativity in psychosomatic sound art. Through performance and interactivity, APP engages with community members to discuss these topics. 
 <Div>Julia E. Dyck is an artist and radio producer originally from Treaty One Territory/Winnipeg who works between Brussels and Montreal/Tiohtià:ke. Dyck's relational and speculative practice explores the possible connections between the body, consciousness, technology and the environment through performance, composition, installation and transmission.
@@ -17,11 +24,36 @@ Audio Placebo Plaza (APP) is Julia E. Dyck, Erin Gee and Vivian Li, a trio of wo
     )
 }
 const Wrapper = styled.div`
+margin-top: 100px;
+margin-left:10px;
+margin-right: 20px;
+padding: 20px;
 display: flex;
-align-items: center;
-justify-content: center;
+flex-direction: column;
+justify-content: flex-start;
+font-family: var(--font-body);
+  color: var(--color-blue);
+
 `
 const Div = styled.div`
+margin-top: 20px;
+margin-bottom: 20px;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+`
 
-padding: 50px`
+const ImgWrap = styled.div`
+display: flex;
+justify-content: center;
+margin-bottom: 20px;
+`
+
+
+const Img = styled.img`
+width:600px;
+border-radius: 20px;
+
+
+`
 export default About

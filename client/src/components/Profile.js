@@ -76,6 +76,7 @@ console.log(placebos)
                 //   <Div>
                       <Placebo>
                     <ResponsiveEmbed src={placebo?.url} />
+                    <div>{placebo?.note}</div>
                     </Placebo>
                 //   </Div>
                 );

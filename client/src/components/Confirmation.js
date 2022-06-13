@@ -4,7 +4,7 @@ import styled from "styled-components";
 import {AiOutlineHeart} from "react-icons/ai"
 import { CurrentUserContext } from "./CurrentUserContext";
 import ResponsiveEmbed from "react-responsive-embed"
-import DryASMR from "./Placebos.js/DryASMR";
+
 import { useParams } from "react-router-dom";
 
 
@@ -56,6 +56,8 @@ const handleLike = () => {
         },
         body: JSON.stringify({
           note: notes,
+          _id: currentUser._id,
+
         })}
     )
     .then((res) => res.json())

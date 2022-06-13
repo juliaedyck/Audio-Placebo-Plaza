@@ -137,6 +137,10 @@ console.log(req.body)
       {$push: 
         {favourites: placeboId}}
 
+      
+      // {$push: 
+      //   {favourites: {"placeboId": placeboId}}}
+
     );
     await client.close();
     if (updateProfile) {
@@ -154,9 +158,9 @@ console.log(req.body)
 //// add note
 
 const addNote = async (req, res)=> {
-
+// const placeboId=req.params.id
   const _id = req.params.id
-  const {note} = req.body
+      const {note } = req.body
   const client = new MongoClient(MONGO_URI, options);
   
   try {
@@ -164,6 +168,19 @@ const addNote = async (req, res)=> {
     console.log("connected")
     const db = client.db("AudioPlacebo")
     const result = await db.collection("sounds").findOneAndUpdate({_id: ObjectId(_id)}, {$set: {note}})
+    // const user = await db.collection("users").findOne({_id: _id}
+    //   const user = await db.collection("users").findOne({_id})
+    //   const fav = user.favourites[placeboId]
+
+    // const updateProfile = await db.collection("users").updateOne(
+    //   { users},
+
+
+    //   {$set: 
+    //     {note}}
+
+    // );
+
     // console.log(placebo)
     if (result) {
       return res.status(200).json({ status: 200 });

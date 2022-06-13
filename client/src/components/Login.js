@@ -58,7 +58,9 @@ const [loading, setLoading]= useState(false)
           setInvalidUser(false)
 
 
+          // history.push(`/profile/${currentUser._id}`)
           history.push("/")
+          
 
         }
       });

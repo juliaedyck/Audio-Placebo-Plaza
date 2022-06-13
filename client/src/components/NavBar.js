@@ -26,8 +26,11 @@ return (
 }
 
 const Wrapper = styled.div`
-display: flex;
-justify-content: right;
+position: fixed;
+width: 100%;
+margin-top: 50px;
+
+justify-content: flex-end;
 padding-bottom: 0;
 background-color:  #f7c2ce;
 height: fit-content;

@@ -12,9 +12,9 @@ const Header =()=> {
        
     <StyledNavLink to= "/">AUDIO PLACEBO PLAZA</StyledNavLink>  
         </Wrapper>
-        <Nav>
+        {/* <Nav>
           <NavBar/>
-        </Nav>
+        </Nav> */}
         </Container>
         </Div>
     )
@@ -28,7 +28,7 @@ width: 100%;
 `
 const Container = styled.div`
 display: flex;
-justify-content: flex-end;
+justify-content: center;
 
 background-color:  #f7c2ce;
 
