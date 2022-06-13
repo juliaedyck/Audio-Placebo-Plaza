@@ -103,17 +103,17 @@ return (
       {isLikedByCurrentUser ? <FcLike/> : <AiOutlineHeart/>}
       </HeartButton >
       </span>
-<div>
-      notes/comments?
+<LikeComment>
+      Notes/Comments?
       <Input
                 type="text"
                 placeholder="your notes"
                 value={notes}
                 onChange={(ev) => setNotes(ev.target.value)}
               />
-              </div>
-              <button onClick={handleNote}>submit</button>
-      <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;" src={placebo?.url} seamless/></Div>
+              <Button onClick={handleNote}>submit</Button>
+              </LikeComment>
+      <Div><ResponsiveEmbed src={placebo?.url}/></Div>
               </PlaceboWrapper>
               </Wrap>
 </>
@@ -122,24 +122,64 @@ return (
 )
 
 }
+
+const LikeComment = styled.div`
+display: flex;
+flex-direction: row;
+margin-top: 15px;
+margin-bottom: 15px;
+align-items: center;
+
+`
+const Button = styled.button`
+  font-family: var(--font-body);
+  background: #336699;
+  height: 30px;
+  width: 150px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  color: #ffff;
+
+
+
+  &:hover {
+    background: #669966;
+    transition: 300ms ease-in-out;
+  }
+
+  &:disabled {
+    background: #669966;
+    cursor: not-allowed;
+    transition: none;
+  }
+`
 const Wrap = styled.div`
 margin-top: 30px;
 display: flex;
 align-items: center;
 flex-direction: column;
 z-index: -1;
+font-family: var(--font-body);
+  color: var(--color-blue);
 `
 
 const HeartButton = styled.span`
 /* z-index: 2; */
-max-height: 30px;
+max-height: 40px;
+font-size: 25px;
+padding: 3px;
 `
 
 const Input = styled.input`
-  height: 20px;
-  width: 125px;
-  margin-left: 10px;
+margin-left: 10px;
+margin-right: 10px;
+  height: 27px;
+  width: 300px;
+  border-radius: 16px;
+  border: 2px solid #f7c2ce;
 `;
+
 
 
 const PlaceboWrapper = styled.div`

@@ -10,14 +10,25 @@ const HomePage = () => {
         Can placebos help? Does sound have the power to process complex
         emotions? Can music give you what you need? Is this even music?
       </InfiniteScroll>
+      {/* <InfiniteScroll>
+        Can placebos help? Does sound have the power to process complex
+        emotions? Can music give you what you need? Is this even music?
+      </InfiniteScroll> */}
+      <InfiniteScroll2>
+        Can placebos help? Does sound have the power to process complex
+        emotions? Can music give you what you need? Is this even music?
+      </InfiniteScroll2>
       {/* <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;"/></Div> */}
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-height: 100%;
-width: 100%;
+
+margin-top: 100px;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
 
 
 `
@@ -30,9 +41,20 @@ const scroll = keyframes`
 
 const InfiniteScroll = styled.div`
 display:flex;
+width: 100%;
 justify-content: flex-end;
-margin-top: 200px;
+
   animation: ${scroll} 20s infinite linear;
+`
+
+const InfiniteScroll2 = styled.div`
+display:flex;
+width: 100%;
+justify-content: flex-end;
+flex-wrap: nowrap;
+
+  animation: ${scroll} 20s infinite linear;
+  animation-delay: 10s;
 `
 // const Scroll = styled.div`
 //     display: inline-block;
