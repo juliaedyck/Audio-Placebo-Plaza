@@ -16,8 +16,33 @@ const Profile = () => {
     const [placebo, setPlacebo] = useState()
     const [placebos, setPlacebos] = useState([])
 
+    let audio4 = new Audio("/white.mp3");
+    let audio5 = new Audio("/pink.mp3");
+    let audio6 = new Audio("/brown.mp3")
+    const [audio, setAudio] = useState({white: audio4, pink: audio5, brown: audio6})
+    const [currentlyPlaying, setCurrentlyPlaying] = useState(null)
 
-    
+    const playPause = (soundname) => {
+      if (currentlyPlaying === soundname) {
+        audio[currentlyPlaying].pause();
+        setCurrentlyPlaying(null);
+  
+      }
+      // Get state of song
+      // let isPlaying = this.state.isPlaying;
+      else if (currentlyPlaying) {
+        // Pause the song if it is playing
+        audio[currentlyPlaying].pause();
+        audio[soundname].play();
+        setCurrentlyPlaying(soundname);
+  
+      } else {
+        // Play the song if it is paused
+        audio[soundname].play();
+        setCurrentlyPlaying(soundname);
+        console.log("play");
+      }
+    };
      
     useEffect(() => {
         setIsLoading(true)
@@ -61,8 +86,15 @@ console.log(placebos)
               
             <Greeting>Hi {currentUser.firstName}!</Greeting>
             <NoiseSound>
-            <NoiseWrapper>Your noise: <Span> {currentUser.noise}</Span></NoiseWrapper>
-            <FavSound>Your favourite sound: <Span> {currentUser.favSound} </Span></FavSound>
+            <NoiseWrapper>Your noise: <Span> 
+            <Noise onClick={() => playPause(`${currentUser.noise}`)}>
+ 
+     {currentUser.noise}</Noise></Span></NoiseWrapper>
+
+
+            <FavSound>Your favourite sound: <p>{currentUser.favSound}</p><Span>
+        
+             </Span></FavSound>
             </NoiseSound>
             <Div>
                 <P> Your Placebos:</P>
@@ -77,24 +109,15 @@ console.log(placebos)
                       <Placebo>
                     <ResponsiveEmbed src={placebo?.url} />
                     </Placebo>
+                    {placebo.note && 
                 <Notes>
                 Results:
-                <div>  {placebo?.note}</div>
-                </Notes>
+                <Results>  {placebo?.note}</Results>
+                </Notes>}
                 </div>
                 );
                 
-                //             if (currentUser.favourites.some((favourite) => favourite === placebo._id)) {
 
-                // return (
-                // <PlaceboWrapper key ={currentUser._id}>
-                //         Your audio placebos:
-                //         {currentUser?.favourites?.map((fav) => <p>{fav}</p>)}
-
-                //     </PlaceboWrapper>
-                // )
-                // }
-                //             })
               })}
               </Div>
       </Wrapper>
@@ -102,8 +125,30 @@ console.log(placebos)
           </div>
     );}
 
+const Noise = styled.div`
 
-    const Notes = styled.div``;
+color: #336699;
+  font-family: var(--font-heading);
+  text-decoration: none;
+  outline: none;
+  font-size: 30px;
+  &:hover {
+    color: #669966;
+    
+  }
+`
+    const Results = styled.div`
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: white;
+    border-radius: 16px;
+    padding: 10px;
+    font-size: 10px;
+    height: fit-content;
+    `
+    const Notes = styled.div`
+    padding: 5px;
+    `;
     const NoiseSound = styled.div`
       display: flex;
       flex-direction: column;
@@ -134,13 +179,14 @@ height: 50px;
 width: 600px;
 padding: 0;
 margin: 0;
+
 `
 
 
 const Div = styled.div`
   box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.14);
   background-color: var(--color-pink);
-height: 200px;
+height: fit-content;
 width: 600px;
 border-radius: 30px;
 padding: 80px;
