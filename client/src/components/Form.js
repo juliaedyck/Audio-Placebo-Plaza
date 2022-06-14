@@ -29,9 +29,13 @@ const Form = () => {
   
   const history = useHistory();
   let audio1 = new Audio("/isotones.mp3");
-  let audio2 = new Audio("/VLF+short.mp3");
+  let audio2 = new Audio("/vlf.mp3");
+  let audio3 = new Audio("/drone.mp3");
+  let audio4 = new Audio("/white.mp3");
+  let audio5 = new Audio("/pink.mp3");
+  let audio6 = new Audio("/brown.mp3")
   const [audioElement1, setAudioElement1]= useState(audio1)
-  const [audio, setAudio] = useState({isotones: audio1, vlf: audio2})
+  const [audio, setAudio] = useState({isotones: audio1, vlf: audio2, drones: audio3, white: audio4, pink: audio5, brown: audio6})
   const [currentlyPlaying, setCurrentlyPlaying] = useState(null)
   
  
@@ -198,7 +202,13 @@ const newWindow = (url) => {
 
             <Choice>
               <Input2 type="checkbox" id="drones" />
-              <label for=" drones"> drone </label>
+              {/* <label for=" drones"> drone </label> */}
+  
+              <label for="drones">
+                <div onClick={() => playPause("drones")}>
+                   drones
+                </div>
+              </label>
             </Choice>
 
             <Choice>
@@ -373,21 +383,34 @@ const newWindow = (url) => {
               id="white"
               onChange={() => setNoise("white")}
             />
-            <label for="white"> white </label>
+            <label for="white">
+              
+            <div onClick={() => playPause("white")}>
+            white
+                </div>
+              </label>
             <Input2
               type="radio"
               name="color"
               id="pink"
               onChange={() => setNoise("pink")}
             />
-            <label for="pink"> pink </label>
+            <label for="pink"> 
+            <div onClick={() => playPause("pink")}>
+            pink
+                </div>
+              </label>
             <Input2
               type="radio"
               name="color"
               id="brown"
               onChange={() => setNoise("brown")}
             />
-            <label for="brown"> brown </label>
+            <label for="brown">
+            <div onClick={() => playPause("brown")}>
+            brown
+                </div>
+              </label>
           </NoiseWrapper>
           <Experience>
             Do you have any sonic allergies or have you ever experienced adverse
