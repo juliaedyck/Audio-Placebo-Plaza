@@ -106,6 +106,7 @@ const Login = () => {
 
 const Img =styled.img`
 height: 300px;
+margin-right: 20px;
 `
 
 const ImgWrap = styled.div`
