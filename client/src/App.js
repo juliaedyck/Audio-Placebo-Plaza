@@ -18,7 +18,7 @@ const App = () =>{
       <GlobalStyles/>
       <Wrapper>
         <Header />
-        <NavBar />
+        {/* <NavBar /> */}
         <Switch>
           <Route exact path="/">
             <HomePage />

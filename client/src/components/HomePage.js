@@ -9,30 +9,35 @@ import ResponsiveEmbed from "react-responsive-embed"
 const HomePage = () => {
   return (
     <Wrapper>
-    
       {/* <Img src={gold} alt="gold"/> */}
-<Img/>
-      <InfiniteScroll>
-        Can placebos help?                  Does sound have the power to process complex
-        emotions?                     Can music give you what you need? Is this even music?
-        
-      </InfiniteScroll>
-      <InfiniteScroll2>
-        Can placebos help?                    Does sound have the power to process complex
-        emotions?                                    Can music give you what you need? Is this even music?
-      </InfiniteScroll2>
-      {/* <InfiniteScroll3>
-        Can placebos help? Does sound have the power to process complex
-        emotions? Can music give you what you need? Is this even music?
-      </InfiniteScroll3> */}
-      {/* <Div><ResponsiveEmbed style="border: 0; width: 200px; height: 42px;"/></Div> */}
+      <Img />
+      <Div>
+        <InfiniteScroll>
+          Can placebos help? Does sound have the power to process complex
+          emotions? Can music give you what you need? Is this even music?
+        </InfiniteScroll>
+        <InfiniteScroll2>
+          Can placebos help? Does sound have the power to process complex
+          emotions? Can music give you what you need? Is this even music? Can
+          placebos help?
+        </InfiniteScroll2>
+      </Div>
     </Wrapper>
   );
 };
 
+const Div = styled.div`
+width: 100%;
+background-color:  #f7c2ce;
+height: 50px;
+margin-top: 35px;
+z-index: 2; 
+position: fixed;
+
+`
 const Wrapper = styled.div`
 width: 100%;
-margin-top: 100px;
+margin-top: 35px;
 display: flex;
 flex-direction: row;
 justify-content: flex-end;
@@ -49,12 +54,12 @@ width: 100%;
 background-size: contain;
 background-position: center;
 position: absolute;
-top: 10%;
+top: 9%;
 
 `
 const scroll = keyframes`
 
-    0% {transform: translateX(4000px);}
+    0% {transform: translateX(3500px);}
     25%{transform: translateX(2000px)}
     50%{transform: translateX(0px)}
     75%{transform: translateX(-2000px)}
@@ -87,12 +92,16 @@ const scroll2 = keyframes`
 
 const InfiniteScroll = styled.div`
 position: absolute;
+background-color:  #f7c2ce;
+
   width: 150%;
 
   animation: ${scroll} 30s linear infinite;
 `
 
 const InfiniteScroll2 = styled.div`
+background-color:  #f7c2ce;
+
 position: absolute;
   width: 150%;
 
@@ -108,5 +117,4 @@ animation: ${scroll3} 20s linear infinite; */
 // `
 
 
-const Div = styled.div``
 export default HomePage

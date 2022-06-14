@@ -12,9 +12,9 @@ const Header =()=> {
        
     <StyledNavLink to= "/">AUDIO PLACEBO PLAZA</StyledNavLink>  
         </Wrapper>
-        {/* <Nav>
+        <Nav>
           <NavBar/>
-        </Nav> */}
+        </Nav>
         </Container>
         </Div>
     )
@@ -27,8 +27,7 @@ width: 100%;
 
 `
 const Container = styled.div`
-display: flex;
-justify-content: center;
+
 
 background-color:  #f7c2ce;
 
@@ -37,10 +36,10 @@ background-color:  #f7c2ce;
 const Nav = styled.div`
 display: flex;
 align-items: flex-end;
-padding-bottom: 7px;
-margin-left: 10px;
-
-`
+/* margin-top: 40px; */
+/* padding-bottom: 7px;
+ margin-left: 10px; */
+ `
 const Wrapper = styled.div`
 display: flex;
 justify-content: center;
@@ -50,8 +49,9 @@ padding-right: 80px;
 
 const StyledNavLink = styled(NavLink)`
 text-decoration: none;
-padding: 10px;
-padding: 10px;
+padding-top: 10px;
+z-index: 2;
+/* padding: 20px; */
 
 color: #336699;
   font-family: var(--font-heading);

@@ -26,20 +26,19 @@ return (
 }
 
 const Wrapper = styled.div`
+display: flex;
+justify-content: flex-end;
 position: fixed;
 width: 100%;
-margin-top: 50px;
-
 justify-content: flex-end;
-padding-bottom: 0;
 background-color:  #f7c2ce;
-height: fit-content;
+height: 30px;
+padding: 0;
 `
 
 const StyledNavLink = styled(NavLink)`
-padding: 10px;
 color: #669966;
-  margin-left: 10px;
+  margin-right: 10px;
   font-family: var(--font-body);
   text-decoration: none;
   outline: none;

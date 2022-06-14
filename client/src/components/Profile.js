@@ -73,14 +73,17 @@ console.log(placebos)
               .map((placebo, index) => {
                 console.log(placebo);
                 return (
-                //   <Div>
+                  <div>
                       <Placebo>
                     <ResponsiveEmbed src={placebo?.url} />
-                    <div>{placebo?.note}</div>
                     </Placebo>
-                //   </Div>
+                <Notes>
+                Results:
+                <div>  {placebo?.note}</div>
+                </Notes>
+                </div>
                 );
-
+                
                 //             if (currentUser.favourites.some((favourite) => favourite === placebo._id)) {
 
                 // return (
@@ -99,13 +102,16 @@ console.log(placebos)
           </div>
     );}
 
-const NoiseSound = styled.div`
-display: flex;
-flex-direction: column;`
 
+    const Notes = styled.div``;
+    const NoiseSound = styled.div`
+      display: flex;
+      flex-direction: column;
+    `;
 
-const Span = styled.span`
-font-size: 20px;`
+    const Span = styled.span`
+      font-size: 20px;
+    `;
 
 
 const Wrapper = styled.div`
@@ -123,8 +129,11 @@ const P = styled.p`
 margin-bottom: 10px;
 `
 const Placebo = styled.div`
+min-width: 50px;
 height: 50px;
 width: 600px;
+padding: 0;
+margin: 0;
 `
 
 
