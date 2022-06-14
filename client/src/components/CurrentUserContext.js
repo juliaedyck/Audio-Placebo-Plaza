@@ -12,16 +12,6 @@ const [loggedIn, setLoggedIn]= useState(false)
 const [password, setPassword]= useState("")
 const [favourites, setFavourites]= useState([])
 
-// useEffect(() => {
-//   const storedValue = sessionStorage.getItem("name")
-
-//     if (storedValue) {
-//       setLoggedIn(true)
-//       setCurrentUser(JSON.parse(storedValue))
-//       console.log(currentUser, "user")
-//     }
-
-// })
 
 return (
     <CurrentUserContext.Provider value={{currentUser, setCurrentUser, setLoggedIn, loggedIn, password, setPassword, favourites, setFavourites, firstName, setFirstName}}>

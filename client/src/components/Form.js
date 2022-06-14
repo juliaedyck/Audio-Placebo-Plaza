@@ -2,22 +2,15 @@ import styled from "styled-components";
 import { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { CurrentUserContext } from "./CurrentUserContext";
-// import {isotones} from ".../client/public/isotones";
 
 const Form = () => {
-  //state variables here
-  // const [firstName, setFirstName] = useState()
-  // const [lastName, setLastName] = useState("");
-  // const [email, setEmail] = useState("");
   const [favSound, setFavSound] = useState("");
   const [noise, setNoise] = useState("");
-  const [formData, setFormData] = useState("");
   const [calming, setCalming] = useState();
   const [embodied, setEmbodied] = useState();
   const [voices, setVoices] = useState();
-  const [playing, setPlaying] = useState(false);
-  
-  
+
+
   const {
     loggedIn,
     setLoggedIn,
@@ -26,34 +19,30 @@ const Form = () => {
     password,
     setPassword,
   } = useContext(CurrentUserContext);
-  
+
+  //declaring audio
   const history = useHistory();
   let audio1 = new Audio("/isotones.mp3");
   let audio2 = new Audio("/vlf.mp3");
   let audio3 = new Audio("/drone.mp3");
   let audio4 = new Audio("/white.mp3");
   let audio5 = new Audio("/pink.mp3");
-  let audio6 = new Audio("/brown.mp3")
-  const [audioElement1, setAudioElement1]= useState(audio1)
-  const [audio, setAudio] = useState({isotones: audio1, vlf: audio2, drones: audio3, white: audio4, pink: audio5, brown: audio6})
-  const [currentlyPlaying, setCurrentlyPlaying] = useState(null)
-  
- 
+  let audio6 = new Audio("/brown.mp3");
 
+  const [audio, setAudio] = useState({
+    isotones: audio1,
+    vlf: audio2,
+    drones: audio3,
+    white: audio4,
+    pink: audio5,
+    brown: audio6,
+  });
+  const [currentlyPlaying, setCurrentlyPlaying] = useState(null);
 
-
-
-  // let audio = isotones
-
-  // const start1 = () => {
-  //   audio1.play();
-  // };
-  
   const playPause = (soundname) => {
     if (currentlyPlaying === soundname) {
       audio[currentlyPlaying].pause();
       setCurrentlyPlaying(null);
-
     }
     // Get state of song
     // let isPlaying = this.state.isPlaying;
@@ -62,21 +51,19 @@ const Form = () => {
       audio[currentlyPlaying].pause();
       audio[soundname].play();
       setCurrentlyPlaying(soundname);
-
     } else {
       // Play the song if it is paused
       audio[soundname].play();
       setCurrentlyPlaying(soundname);
-      console.log("play");
     }
   };
 
-const newWindow = (url) => {
-  window.open(url, "newwindow", "width=500,height=350");
-  return false;
-};
+  const newWindow = (url) => {
+    window.open(url, "newwindow", "width=500,height=350");
+    return false;
+  };
 
-
+  //// handle submit to submit form and patch answers to BE
 
   const handleSubmit = (ev) => {
     ev.preventDefault();
@@ -95,28 +82,24 @@ const newWindow = (url) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setCurrentUser(data.data);
       });
 
-    if (embodied === true && voices === false) {
+    if (embodied === true && voices === false && calming !== true) {
       history.push("/confirmed/62a0a11e5173fa8e3f126f03");
-    } else if (embodied === true && voices === true) {
+    } else if (embodied === true && voices === true && calming !== true) {
       history.push("/confirmed/62a0f53e21d84c85e88f4b73");
-    } else if (voices === true && calming === true) {
+    } else if (voices === true && calming === true && embodied === true) {
       history.push("/confirmed/62a0f30921d84c85e88f4b70");
     } else if (voices === true && calming === true && embodied !== true) {
       history.push("/confirmed/62a253957c8d6e6823eeabb9");
-    } else if (voices !== true && calming !== true && embodied !== true) {
+    } else if (voices === false && calming !== true && embodied !== true) {
       history.push("/confirmed/62a255437c8d6e6823eeabba");
     } else {
       history.push("/confirmed/62a257047c8d6e6823eeabbb");
     }
   };
 
-  const handleChange = (value, name) => {
-    setFormData({ ...formData, [name]: value });
-  };
   return (
     <Container>
       <TheForm onSubmit={handleSubmit}>
@@ -203,11 +186,9 @@ const newWindow = (url) => {
             <Choice>
               <Input2 type="checkbox" id="drones" />
               {/* <label for=" drones"> drone </label> */}
-  
+
               <label for="drones">
-                <div onClick={() => playPause("drones")}>
-                   drones
-                </div>
+                <div onClick={() => playPause("drones")}>drones</div>
               </label>
             </Choice>
 
@@ -265,31 +246,25 @@ const newWindow = (url) => {
               <Input2 type="checkbox" id="ASMR" />
 
               <label for="ASMR">
-              <StyledLink
+                <StyledLink
                   onClick={() =>
                     newWindow("https://www.youtube.com/watch?v=bbPg3Dc68cA")
                   }
                   target="_blank"
                 >
-
                   ASMR
-                  </StyledLink>
-
+                </StyledLink>
               </label>
             </Choice>
             <Choice>
               <Input2 type="checkbox" id="laughter yoga" />
               <label for="laughter yoga">
-              <StyledLink
-                  onClick={() =>
-                    newWindow("https://laughteryoga.org/")
-                  }
+                <StyledLink
+                  onClick={() => newWindow("https://laughteryoga.org/")}
                   target="_blank"
                 >
-        
                   laughter yoga
-                  </StyledLink>
-
+                </StyledLink>
               </label>
             </Choice>
 
@@ -301,16 +276,16 @@ const newWindow = (url) => {
             <Choice>
               <Input2 type="checkbox" id="guided meditation" />
               <label for="guided meditation">
-              <StyledLink
+                <StyledLink
                   onClick={() =>
-                    newWindow("https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s")
+                    newWindow(
+                      "https://www.youtube.com/watch?v=eg53RoTeOV4&t=6s"
+                    )
                   }
                   target="_blank"
                 >
-              
                   guided meditation
-                  </StyledLink>
-
+                </StyledLink>
               </label>
             </Choice>
           </OptionsWrapper>
@@ -384,22 +359,17 @@ const newWindow = (url) => {
               onChange={() => setNoise("white")}
             />
             <label for="white">
-              
-            <div onClick={() => playPause("white")}>
-            white
-                </div>
-              </label>
+              <div onClick={() => playPause("white")}>white</div>
+            </label>
             <Input2
               type="radio"
               name="color"
               id="pink"
               onChange={() => setNoise("pink")}
             />
-            <label for="pink"> 
-            <div onClick={() => playPause("pink")}>
-            pink
-                </div>
-              </label>
+            <label for="pink">
+              <div onClick={() => playPause("pink")}>pink</div>
+            </label>
             <Input2
               type="radio"
               name="color"
@@ -407,10 +377,8 @@ const newWindow = (url) => {
               onChange={() => setNoise("brown")}
             />
             <label for="brown">
-            <div onClick={() => playPause("brown")}>
-            brown
-                </div>
-              </label>
+              <div onClick={() => playPause("brown")}>brown</div>
+            </label>
           </NoiseWrapper>
           <Experience>
             Do you have any sonic allergies or have you ever experienced adverse
@@ -427,19 +395,12 @@ const newWindow = (url) => {
           </Experience>
         </Wrapper>
 
-        <Button
-        // type="submit"
-        // disabled={!( firstName && lastName && email && password) ? true : false}
-        >
-          Confirm
-        </Button>
+        <Button type="submit">Confirm</Button>
       </TheForm>
     </Container>
   );
 };
- const Div = styled.div`
- /* padding: 20px; */
- `
+const Div = styled.div``;
 
 const Choice = styled.div`
   display: flex;
@@ -453,35 +414,24 @@ const Choice = styled.div`
   }
 `;
 
-// const StyledLink = styled(Link)`
-// text-decoration: none;
-//   color: var(--color-blue);
-//   &:hover {
-//     color: var(--color-green);
-//     transition: 300ms ease-in-out;
-//   }
-// `
-
 const StyledLink = styled.a`
-text-decoration: none;
+  text-decoration: none;
   color: var(--color-blue);
   &:hover {
     color: var(--color-green);
     transition: 300ms ease-in-out;
   }
-`
+`;
 
 const Experience = styled.div`
-padding-top: 20px;
-padding-bottom: 20px;
-display: flex;
-align-items: center;
-
-`
+  padding-top: 20px;
+  padding-bottom: 20px;
+  display: flex;
+  align-items: center;
+`;
 
 const OptionsWrapper = styled.div`
-  box-shadow: 0px 0px 
-  10px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
 
   display: grid;
   justify-content: center;
@@ -499,14 +449,15 @@ const OptionsWrapper = styled.div`
 `;
 
 const NoiseWrapper = styled.div`
-/* padding: 20px; */
-display: flex;
-align-items: center;
+  display: flex;
+  align-items: center;
+  &:hover {
+    color: var(--color-green);
+    transition: 300ms ease-in-out;
+  }
 `;
 
 const ExperienceWrapper = styled.div`
-
-  /* padding: 20px; */
 `;
 
 const Input = styled.input`
@@ -515,11 +466,10 @@ const Input = styled.input`
   margin-left: 5px;
   border-radius: 20px;
   border: 2px solid #f7c2ce;
-  &:focus { 
+  &:focus {
     border: 2px solid #f7c2ce;
     transition: 300ms ease-in-out;
   }
-  /* color: #f7c2ce; */
 `;
 
 const Input2 = styled(Input)`
@@ -527,11 +477,9 @@ const Input2 = styled(Input)`
   margin: 5px;
   padding: 10px;
   border-radius: 50px;
-  color: 1px solid  var(--color-pink);
+  color: 1px solid var(--color-pink);
   color: #f7c2ce;
-  border: 10px solid  #f7c2ce;
-
-
+  border: 10px solid #f7c2ce;
 `;
 
 const Input3 = styled(Input)`
@@ -548,13 +496,11 @@ const Wrapper = styled.div`
 `;
 
 const Container = styled.div`
-
   padding: 40px;
   display: flex;
   flex-direction: column;
   font-family: var(--font-body);
   color: var(--color-blue);
-  
 `;
 
 const TheForm = styled.form`
@@ -587,6 +533,5 @@ const Button = styled.button`
   }
 `;
 
-const Select = styled.select``;
 
 export default Form;

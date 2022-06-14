@@ -4,7 +4,6 @@ export default createGlobalStyle`
 
 :root {
 	--font-heading: 'Amarante', cursive;
-	/* --font-body: 'Mulish', sans-serif; */
 	--font-body: 'Inter', sans-serif;
 
 
