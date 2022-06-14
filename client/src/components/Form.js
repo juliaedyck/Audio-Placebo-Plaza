@@ -2,6 +2,11 @@ import styled from "styled-components";
 import { useState, useContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import { CurrentUserContext } from "./CurrentUserContext";
+import ear from "../photos/app_ear.png"
+import keyboard from "../photos/app_keyboard.png"
+import lips from "../photos/app_lips.png"
+import mic from "../photos/app_mic.png"
+
 
 const Form = () => {
   const [favSound, setFavSound] = useState("");
@@ -291,6 +296,9 @@ const Form = () => {
           </OptionsWrapper>
           <ExperienceWrapper>
             <Experience>
+              {/* <ImgWrap>
+              <Img src={mic} alt="mic" />
+              </ImgWrap> */}
               What kind of experience are you seeking?
               <Input2
                 type="radio"
@@ -307,6 +315,7 @@ const Form = () => {
                 onChange={() => setCalming(false)}
               />
               <label for="energizing"> energizing </label>
+
             </Experience>
 
             <div>
@@ -327,6 +336,8 @@ const Form = () => {
                   onChange={() => setEmbodied(false)}
                 />
                 <label for="cognitage/emotional"> cognitage/emotional </label>
+
+
               </Experience>
             </div>
             <div>
@@ -347,6 +358,9 @@ const Form = () => {
                   onChange={() => setVoices(false)}
                 />
                 <label for="no-voice"> No</label>
+                {/* <ImgWrap>
+              <Img2 src={lips} alt="lips" />
+              </ImgWrap> */}
               </Experience>
             </div>
           </ExperienceWrapper>
@@ -392,6 +406,10 @@ const Form = () => {
               placeholder=""
               onChange={(ev) => setFavSound(ev.target.value)}
             />
+        {/* <ImgWrap>
+
+<Img3 src={keyboard} alt="" />
+</ImgWrap> */}
           </Experience>
         </Wrapper>
 
@@ -400,7 +418,26 @@ const Form = () => {
     </Container>
   );
 };
-const Div = styled.div``;
+
+const Img =styled.img`
+height: 50px;
+
+`
+
+const Img2 = styled.img`
+height: 400px;`
+
+const Img3 = styled.img`
+height: 150px;
+margin-left: 30px;`
+
+
+const ImgWrap = styled.div`
+height: 50px;
+`;
+
+const Div = styled.div`
+`;
 
 const Choice = styled.div`
   display: flex;
