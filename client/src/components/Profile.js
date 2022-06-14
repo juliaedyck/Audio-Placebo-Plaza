@@ -130,7 +130,7 @@ const Profile = () => {
 
 const Img =styled.img`
 height: 400px;
-padding-left: 20px;
+padding-left: 30px;
 /* z-index: -1;
 margin-left: 200px; */
 `
