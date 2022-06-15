@@ -88,12 +88,13 @@ const NewUser = () => {
             type="text"
             placeholder="create a password"
             value={password}
+            minlength="5"
             onChange={(ev) => setPassword(ev.target.value)}
           />
           <Button
             type="submit"
             disabled={
-              !(firstName && lastName && email && password) ? true : false
+              !(firstName && lastName && email && password.length > 5) ? true : false
             }
           >
             Confirm

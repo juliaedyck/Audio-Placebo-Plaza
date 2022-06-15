@@ -296,9 +296,6 @@ const Form = () => {
           </OptionsWrapper>
           <ExperienceWrapper>
             <Experience>
-              {/* <ImgWrap>
-              <Img src={mic} alt="mic" />
-              </ImgWrap> */}
               What kind of experience are you seeking?
               <Input2
                 type="radio"
@@ -358,9 +355,6 @@ const Form = () => {
                   onChange={() => setVoices(false)}
                 />
                 <label for="no-voice"> No</label>
-                {/* <ImgWrap>
-              <Img2 src={lips} alt="lips" />
-              </ImgWrap> */}
               </Experience>
             </div>
           </ExperienceWrapper>
@@ -437,9 +431,11 @@ height: 50px;
 `;
 
 const Div = styled.div`
+margin-bottom: 20px;
 `;
 
 const Choice = styled.div`
+padding: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -461,15 +457,15 @@ const StyledLink = styled.a`
 `;
 
 const Experience = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 60px;
+  padding-bottom: 60px;
   display: flex;
   align-items: center;
 `;
 
 const OptionsWrapper = styled.div`
   box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
-
+margin: 50px;
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(3, minmax(250px, 425px));
@@ -486,6 +482,8 @@ const OptionsWrapper = styled.div`
 `;
 
 const NoiseWrapper = styled.div`
+  padding-top: 60px;
+  padding-bottom: 60px;
   display: flex;
   align-items: center;
   &:hover {

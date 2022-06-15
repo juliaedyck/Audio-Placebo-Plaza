@@ -1,11 +1,12 @@
 import { useState, useContext, useEffect } from "react";
 import { FcLike } from "react-icons/fc";
-import styled from "styled-components";
+import styled, { keyframes }from "styled-components";
 import { AiOutlineHeart } from "react-icons/ai";
 import { CurrentUserContext } from "./CurrentUserContext";
 import ResponsiveEmbed from "react-responsive-embed";
 import LoadingSpinner from "./LoadingSpinner";
 import { useParams } from "react-router-dom";
+
 
 const Confirmation = () => {
   const [placebo, setPlacebo] = useState();
@@ -95,7 +96,8 @@ const Confirmation = () => {
                   isLiked={isLikedByCurrentUser}
                   onClick={handleLike}
                 >
-                  {isLikedByCurrentUser ? <FcLike /> : <AiOutlineHeart />}
+                  {isLikedByCurrentUser ? <FcLike /> :<AiOutlineHeart /> }
+
                 </HeartButton>
               </span>
               <LikeComment>
@@ -118,6 +120,7 @@ const Confirmation = () => {
     </>
   );
 };
+
 
 const LikeComment = styled.div`
   display: flex;
@@ -157,12 +160,21 @@ const Wrap = styled.div`
   color: var(--color-blue);
 `;
 
+const grow = keyframes`
+  70% {
+     font-size: 30px;
+  }
+`
 const HeartButton = styled.span`
-  /* z-index: 2; */
   max-height: 40px;
   font-size: 25px;
   padding: 3px;
+
+  &:isLiked {
+  animation: ${grow} 1s;
+  }
 `;
+
 
 const Input = styled.input`
   margin-left: 10px;

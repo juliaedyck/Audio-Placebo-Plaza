@@ -5,13 +5,22 @@ import photo from "../photos/064A4457.jpg";
 const About = () => {
   return (
     <Wrapper>
+      <TextDiv>Can placebos help?
+
+      <p>Does sound have the power to process complex emotions?
+
+Can music give you what you need?
+
+Is this even music?</p>
+
+<p>Erin Gee, Julia E Dyck, and Viv Li offer everyday people customized positive messages, audio creations, healing frequencies, binaural beats, and ASMR, responding to the needs of our </p><p>community through a practice of radical sonic care.</p>
+
+<p>We promise our fullest intention</p></TextDiv>
       <ImgWrap>
         <Img src={photo} alt="team photo" />
       </ImgWrap>
       <Div>
-        Audio Placebo Plaza (APP) is Julia E. Dyck, Erin Gee and Vivian Li, a
-        trio of woman-identified and non-gender conforming artists based in
-        Montreal/Tiohtià:ke focused on the expansion of intersectional feminist
+        Audio Placebo Plaza (APP) is focused on the expansion of intersectional feminist
         methods of care, emotional labor, collaboration, and community in sound
         art. APP considers "placebo" as a complex, open-ended, and optimistic
         conceptual framework for work that embraces irony, play, and
@@ -56,6 +65,14 @@ const About = () => {
     </Wrapper>
   );
 };
+
+const TextDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 10px;
+`
 const Wrapper = styled.div`
   margin-top: 100px;
   margin-left: 10px;
@@ -63,7 +80,7 @@ const Wrapper = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: center;
   font-family: var(--font-body);
   color: var(--color-blue);
 `;
@@ -71,8 +88,8 @@ const Div = styled.div`
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
+  justify-content: center;
   flex-direction: column;
-  justify-content: flex-start;
 `;
 
 const ImgWrap = styled.div`

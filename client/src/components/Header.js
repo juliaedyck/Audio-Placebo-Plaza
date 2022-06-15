@@ -37,6 +37,7 @@ const Wrapper = styled.div`
 `;
 
 const StyledNavLink = styled(NavLink)`
+margin-left: 100px;
   text-decoration: none;
   padding-top: 10px;
   z-index: 2;
