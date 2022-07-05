@@ -7,7 +7,7 @@ Can placebos help? Does sound have the power to process complex emotions? Can mu
 
 Erin Gee, Julia E Dyck, and Viv Li offer everyday people customized positive messages, audio creations, healing frequencies, binaural beats, and ASMR, responding to the needs of our community through a practice of radical sonic care. We promise our fullest intention
 
-The project was created using React.jquestionnaires, JavaScript ES6, Node.js, MongoDB, and Express.
+The project was created using React.js, JavaScript, Node.js, MongoDB, and Express
 
 ## Questionnaire
 
